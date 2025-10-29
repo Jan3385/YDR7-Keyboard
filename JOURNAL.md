@@ -13,3 +13,14 @@ I have done some research about which devboard, switches etc to use. I also setu
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjI3MCwicHVyIjoiYmxvYl9pZCJ9fQ==--bdb3aee93f9064a0cd0b4929f170cffa82a11eae/image.png)
   
 
+## 10/29/2025 - Designed the schematic and searched for parts  
+
+I made the (maybe) final schematic for my keyboard. The number of switches and LEDs will probably go down as I am not yet totally sure how much will I need but thats about it. I have put a 128x128 OLED display on the keyboard along with an RGB LED below each key of the keyboard so it should be looking (and working) pretty good once finished
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjQ5MSwicHVyIjoiYmxvYl9pZCJ9fQ==--3809bc769104a4e0c5fa86063304b50ea4538b71/image.png)
+
+I also tried to find all the parts that I will yet need from aliexpress and similar. I have not found all of them but most
+
+Also I looked somewhat onto how to code the firmware later on and such which I am planning to do in C++ and have a custom interactible menu on the OLED along with some animations etc
+  
+
