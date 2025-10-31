@@ -4904,6 +4904,12 @@
 		(uuid "d98e9e7e-ae44-4d17-83f2-8fe0bc79d915")
 	)
 	(junction
+		(at 167.64 149.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d9b4b44e-8664-4448-9046-b5ef67e17227")
+	)
+	(junction
 		(at 248.92 241.3)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -14551,46 +14557,46 @@
 			)
 		)
 		(pin "7"
-			(uuid "e7d195d2-4dd9-4151-81ed-108fc2eb4d36")
+			(uuid "e7d195d2-4dd9-4151-81ed-108fc2eb4d37")
 		)
 		(pin "13"
-			(uuid "6ba0c47b-e685-4f75-85df-99382e20080d")
+			(uuid "6ba0c47b-e685-4f75-85df-99382e20080e")
 		)
 		(pin "2"
-			(uuid "1b879c88-ec79-456c-934f-4e4f5c8d6d5a")
+			(uuid "1b879c88-ec79-456c-934f-4e4f5c8d6d5b")
 		)
 		(pin "10"
-			(uuid "f6159011-8976-4840-a479-9041d234e317")
+			(uuid "f6159011-8976-4840-a479-9041d234e318")
 		)
 		(pin "12"
-			(uuid "08159d25-ac5d-4c06-9d6e-c48b47935fe1")
+			(uuid "08159d25-ac5d-4c06-9d6e-c48b47935fe2")
 		)
 		(pin "8"
-			(uuid "a7231117-63d6-4332-8c55-c645320249df")
+			(uuid "a7231117-63d6-4332-8c55-c645320249e0")
 		)
 		(pin "1"
-			(uuid "963a19fc-9cb0-442d-91a5-f5853b05ce12")
+			(uuid "963a19fc-9cb0-442d-91a5-f5853b05ce13")
 		)
 		(pin "3"
-			(uuid "ab8c573f-bff5-4a24-835e-15772fce51e1")
+			(uuid "ab8c573f-bff5-4a24-835e-15772fce51e2")
 		)
 		(pin "4"
-			(uuid "2d8ba0c6-6450-434b-b4fa-030e1490a143")
+			(uuid "2d8ba0c6-6450-434b-b4fa-030e1490a144")
 		)
 		(pin "6"
-			(uuid "115de42a-68ab-4a7e-9cc8-b44ba840febe")
+			(uuid "115de42a-68ab-4a7e-9cc8-b44ba840febf")
 		)
 		(pin "9"
-			(uuid "65c7fc05-63ad-4494-9e01-3971776c96a6")
+			(uuid "65c7fc05-63ad-4494-9e01-3971776c96a7")
 		)
 		(pin "14"
-			(uuid "f2a40d13-dd5c-4528-b46f-ef07943687ea")
+			(uuid "f2a40d13-dd5c-4528-b46f-ef07943687eb")
 		)
 		(pin "5"
-			(uuid "f3890700-eee5-4936-a6ea-2da239f4ce8d")
+			(uuid "f3890700-eee5-4936-a6ea-2da239f4ce8e")
 		)
 		(pin "11"
-			(uuid "6b1ab5c1-756f-4703-9c04-40063e6e3979")
+			(uuid "6b1ab5c1-756f-4703-9c04-40063e6e397a")
 		)
 		(instances
 			(project ""
@@ -49718,6 +49724,72 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "#PWR054")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 167.64 149.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d24b4076-4612-4d8d-bf16-a717dc23060d")
+		(property "Reference" "#PWR0222"
+			(at 167.64 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 167.64 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 167.64 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 167.64 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 167.64 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f832187d-718b-4eb5-b307-4a9937e6096f")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0222")
 					(unit 1)
 				)
 			)
