@@ -1,28 +1,30 @@
 #include <pico/stdlib.h>
-#include "tusb.h"
 
-uint8_t const HID_DESCRIPTOR[] = { TUD_HID_REPORT_DESC_KEYBOARD() };
-uint8_t const* tud_hid_descriptor_report_cb(uint8_t instance)
-{
-    return HID_DESCRIPTOR;
-}
+#include "config/user_config.h"
 
-void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t type,
-                           uint8_t const* buffer, uint16_t bufsize)
-{
-    // Handle Num-Lock, Caps-Lock, Scroll-Lock etc
-}
-
-// No response needed
-uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t type,
-                               uint8_t* buffer, uint16_t reqlen) { return 0; }
+#include "setup/HID_setup.h"
+#include "setup/TUD_setup.h"
+#include "setup/pin_setup.h"
 
 int main(){
+    #if ENABLE_STDIO
     stdio_init_all();
+    #endif
+
+    PinSetup_ALL();
+
     tusb_init();
 
     while (true) {
-        //tud_task();
+        tud_task();
+
+        uint8_t report[6] = { HID_KEY_A };
+        tud_hid_keyboard_report(0, 0, report);
+
+        sleep_ms(50); // delay between presses
+
+        // release all keys
+        tud_hid_keyboard_report(0, 0, nullptr);
 
         sleep_ms(10);
     }
