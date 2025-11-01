@@ -18,6 +18,8 @@ int main(){
     while (true) {
         tud_task();
 
+        if( !tud_hid_ready() ) continue;
+
         uint8_t report[6] = { HID_KEY_A };
         tud_hid_keyboard_report(0, 0, report);
 
