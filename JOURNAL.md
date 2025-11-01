@@ -33,3 +33,20 @@ ALso improved on the schematic like adding pull-up resistors for the I2C for dis
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjUwNywicHVyIjoiYmxvYl9pZCJ9fQ==--873febe3ec2621b7a91c1d097707787df6fe13f4/image.png)
   
 
+## 11/1/2025 - Finished the wiring of the PCB  
+
+I wired up all the LEDs and buttons on the PCB along with resistors etc. At first I had a lot of errors to go through but most of them were fixed by just changing the tolerances and stitching the PCB
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzNywicHVyIjoiYmxvYl9pZCJ9fQ==--f1caed01e77266c50c18087cd18a594c6f468e0d/image.png)
+
+After stitching the PCB, changing tolerances etc I had 0 errors (whe warnings are mostly fine as its just isolated copper fills)
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzOCwicHVyIjoiYmxvYl9pZCJ9fQ==--9e9e6932a28793a1183b26e78c0f3808d80c3017/image.png)
+
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzNSwicHVyIjoiYmxvYl9pZCJ9fQ==--b4f0f6dfa6222768da702270c583804346831968/image.png)
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--c11c2c79c186cc684d2c3abcc2429131820d1297/image.png)
+
+I am not totally done with the PCB as I will have to check if everything actually works etc but it should be done for the most part  
+
