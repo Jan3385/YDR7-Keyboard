@@ -33,7 +33,7 @@ ALso improved on the schematic like adding pull-up resistors for the I2C for dis
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjUwNywicHVyIjoiYmxvYl9pZCJ9fQ==--873febe3ec2621b7a91c1d097707787df6fe13f4/image.png)
   
 
-## 11/1/2025 - Finished the wiring of the PCB  
+## 11/1/2025 1 AM - Finished the wiring of the PCB  
 
 I wired up all the LEDs and buttons on the PCB along with resistors etc. At first I had a lot of errors to go through but most of them were fixed by just changing the tolerances and stitching the PCB
 
@@ -49,4 +49,11 @@ After stitching the PCB, changing tolerances etc I had 0 errors (whe warnings ar
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzIzNiwicHVyIjoiYmxvYl9pZCJ9fQ==--c11c2c79c186cc684d2c3abcc2429131820d1297/image.png)
 
 I am not totally done with the PCB as I will have to check if everything actually works etc but it should be done for the most part  
+
+## 11/1/2025 9 PM - Basic Firmware  
+
+I have written a basic firmware for the keyboard where I mapped all the pins and made it write the letter "A" on loop as a keyboard. I have written it in C++ since its more fun and probably gives more control than for ex. Python. I was focusing on making the firmware basics easy to modify and configure
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzUxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--3f979ce14a869c99a2764512b4f4c8c75cfc128d/image.png)
+  
 
