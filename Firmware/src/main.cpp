@@ -26,7 +26,7 @@ int main(){
         // release all keys
         tud_hid_keyboard_report(0, 0, nullptr);
 
-        sleep_ms(10);
+        sleep_ms(50);
     }
 
     return 0;
