@@ -3344,6 +3344,12 @@
 		(uuid "2507a21e-cec5-4262-a9ea-394e08eacd18")
 	)
 	(junction
+		(at 334.01 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2562450d-55f8-4364-a2da-745ca8e6184a")
+	)
+	(junction
 		(at 95.25 162.56)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6712,6 +6718,16 @@
 			(type default)
 		)
 		(uuid "56b21f8e-5dc8-4b52-8ba3-523ba87d734a")
+	)
+	(wire
+		(pts
+			(xy 334.01 220.98) (xy 337.82 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56e02eef-e45b-400f-baa6-ea351ae7d8c7")
 	)
 	(wire
 		(pts
@@ -33885,7 +33901,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 337.82 220.98 90)
+		(at 334.01 220.98 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -33894,7 +33910,7 @@
 		(fields_autoplaced yes)
 		(uuid "86493097-ce48-499c-a795-6a2422cda9dd")
 		(property "Reference" "#PWR0115"
-			(at 341.63 220.98 0)
+			(at 337.82 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33903,7 +33919,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 334.01 220.9799 90)
+			(at 330.2 220.9799 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33912,7 +33928,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 337.82 220.98 0)
+			(at 334.01 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33921,7 +33937,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 337.82 220.98 0)
+			(at 334.01 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -33930,7 +33946,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 337.82 220.98 0)
+			(at 334.01 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41437,6 +41453,72 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 334.01 226.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a86eef52-f0e3-4cc6-94da-f31a78dbd6e5")
+		(property "Reference" "#PWR0223"
+			(at 334.01 232.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 334.01 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 334.01 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab9544e1-2534-45c5-bb18-50e1be1831e8")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0223")
 					(unit 1)
 				)
 			)
@@ -53302,6 +53384,76 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "S16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 334.01 223.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e4a081ab-540f-47a1-ab31-84e344da36be")
+		(property "Reference" "C104"
+			(at 336.55 222.2562 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 336.55 224.7962 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 334.01 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 334.01 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 334.01 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ecdc30b8-d945-4ad8-aa36-9832d4a699fe")
+		)
+		(pin "1"
+			(uuid "5ee873ef-faa3-414c-b45a-64be87995e3c")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "C104")
 					(unit 1)
 				)
 			)
