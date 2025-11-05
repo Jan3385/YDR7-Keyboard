@@ -30,7 +30,7 @@ The YD-RP2040 is the devboard with a chip running this project. You may be able 
 
 The keyboard is comprised out of 3 parts. The panel which holds the switches, a back panel and a front panel
 
-Due to their size its impossible to print an entire piece at once, thats why there are sliced versions in the `CAD/` folder. You can print them separately and then weld them with a soldering iron together. You should weld the front and the back piece but not the panels as they are held together by the frame anyway
+Due to their size its impossible to print an entire piece at once, thats why there are sliced versions in the `CAD/Sliced` folder. You can print them separately and then weld them with a soldering iron together. You should weld the front and the back piece but not the panels as they are held together by the frame anyway
 
 ![Sliced case](/CAD/Sliced/slided-parts.png)
 
@@ -51,7 +51,7 @@ Note that the first command may take a while as it is downloading the SDK from g
 
 To load the firmware into the RP2040 chip, press the **BOOT** button on the YD-RP2040 devboard and plug it into your computer. It should appear as a drive in which you insert the `Keyboard_Firmware.uf2` file inside the `Firmware/build/` folder. The keyboard should reboot itself and load the active firmware
 
-To reflash the board, just repeat the steps above
+To reflash the board just repeat the steps above
 
 ## BOM
 
