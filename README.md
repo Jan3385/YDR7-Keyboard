@@ -26,6 +26,14 @@ The keyboard uses a custom PCB with the YD-RP2040 attached to it providing a USB
 
 The YD-RP2040 is the devboard with a chip running this project. You may be able to use a standard Raspberry PI pico but that was not tested
 
+## Case
+
+The keyboard is comprised out of 3 parts. The panel which holds the switches, a back panel and a front panel
+
+Due to their size its impossible to print an entire piece at once, thats why there are sliced versions in the `CAD/` folder. You can print them separately and then weld them with a soldering iron together. You should weld the front and the back piece but not the panels as they are held together by the frame anyway
+
+![Sliced case](/CAD/Sliced/slided-parts.png)
+
 ## Compiling & flashing firmware
 
 > ![NOTE]
