@@ -70,3 +70,4 @@ To reflash the board just repeat the steps above
 | M3x8 screws | screws for PCB and case assembly | [link](https://www.aliexpress.com/item/1005008585550992.html) | 0.05€ | 8 | 0.40€ | 78.77€ |
 | Hot melt inserts MxL4xOD4.2 | inserts for case assembly | [link](https://www.aliexpress.com/item/1005006071488810.html) | 0.11€ | 8 | 0.88€ | 79.65€ |
 | Silicone feet 12x3mm | anti-slip feet for case | [link](https://www.aliexpress.com/item/1005006954839245.html) | 0.72€/4 | 4 | 0.72€ | 80.37€ |
+| PETG Filament | 3D printing filament for case | [link](https://www.aurapol.com/cz/p/aurapol-pet-g-filament-army-panzer-grau-1-kg-1-75-mm) | 17.7€/kg | 1 | 17.7€ | 98.07€
