@@ -57,7 +57,7 @@ I have written a basic firmware for the keyboard where I mapped all the pins and
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NzUxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--3f979ce14a869c99a2764512b4f4c8c75cfc128d/image.png)
   
 
-## 11/5/2025 - CAD model for keyboard assembly  
+## 11/5/2025 5 PM - CAD model for keyboard assembly  
 
 I made the keyboard assembly in CAD. The front plate is for holding switches and the back for screwing in the PCB and such. I will probably edit it a little in the future like adding space for rubber feet etc but I wont probably even make a journal for it
 
@@ -66,4 +66,13 @@ I made the keyboard assembly in CAD. The front plate is for holding switches and
 I also made a few improvements to the PCB and double-checked everything I thought of
 
 I will do few smaller things like finishing the README, BOM etc and then the project should be ready for manufacturing  
+
+## 11/5/2025 8 PM - Finishing up + sliced CAD versions  
+
+I finished up most of the project like BOM, README and such
+
+Also due to the size of a keyboard which is really big I made sliced versions of the case which can be printed separately and welded together with a soldering iron after
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODcwNywicHVyIjoiYmxvYl9pZCJ9fQ==--8397906cdfe4fefbc2564b7596258bcad125a19e/image.png)
+  
 
