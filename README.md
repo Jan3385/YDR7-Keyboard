@@ -2,7 +2,9 @@
 
 A mechanical keyboard build on YD-RP2040 with an OLED display and backlights
 
-Build for MX switches
+Build for **MX** switches
+
+A sligthly modified 96% keyboard layout with 4 extra keys for managing onboard firmware
 
 ## Compiling firmware
 
@@ -15,3 +17,7 @@ Note that the first command may take a while as it is downloading the SDK from g
 > cmake -S Firmware -B Firmware/build -G "Ninja"
 
 > cmake --build Firmware/build --target Keyboard_Firmware
+
+To load the firmware into the RP2040 chip, press the **BOOT** button on the YD-RP2040 devboard and plug it into your computer. It should appear as a drive in which you insert the `???.uf2` file inside the `Firmware/build/` folder. The keyboard should reboot itself and load the active firmware
+
+To reflash the board, just repeat the steps above
