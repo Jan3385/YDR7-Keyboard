@@ -55,11 +55,11 @@ To reflash the board just repeat the steps above
 
 ## BOM
 
-| Product name | Product description | Product link | Product unit cost inc. tax (€) | Product amount | Product total cost (€) | Running total (€ with tax) |
+| Product name | Product description | Product link | Product unit cost inc. tax (€) | Product amount | Product total cost (€) | Running total (€ with tax. NO SHIPPING) |
 |---------------|----------------------|---------------|----------------------------------|----------------|------------------------|-----------------------------|
 | YD-RP2040 | RPI pico-like microcontroller board | [link](https://www.aliexpress.com/item/1005006152339711.html) | 2.99€ | 1 | 2.99€ | 2.99€ |
 | 74AHCT125DR | Logic level shifter IO | [link](https://www.aliexpress.com/item/1005010022053816.html) | 3.01€ | 1 | 3.01€ | 6.00€ |
-| 100nF 0805 Ceramic Capacitor (>= 6.3V) | Decoupling capacitor | [link](https://www.aliexpress.com/item/1005007470747384.html) | 0.0173€ | 104 | 1.79€ | 7.79€ |
+| 100nF 0805 Ceramic Capacitor (>= 6.3V) | Decoupling capacitor | [link](https://www.aliexpress.com/item/1005007470747384.html) | 0.0173€ | 105 | 1.79€ | 7.79€ |
 | 10kΩ 0805 Resistor | Pull-up resistor | [link](https://www.aliexpress.com/item/1005009805187579.html) | 0.019€ | 2 | 0.038€ | 7.83€ |
 | 1N4148W Diode | Keyboard matrix diode | [link](https://www.aliexpress.com/item/4000685043735.html) | 0.0172€ | 103 | 1.77€ | 9.60€ |
 | Kailh Hot-Swap Sockets for Gateron | PCB sockets for switches | [link](https://www.aliexpress.com/item/1005009594313632.html) | 8.24€/150 | 103 | 8.24€ | 17.84€ |
@@ -71,3 +71,4 @@ To reflash the board just repeat the steps above
 | Hot melt inserts MxL4xOD4.2 | inserts for case assembly | [link](https://www.aliexpress.com/item/1005006071488810.html) | 0.11€ | 8 | 0.88€ | 79.65€ |
 | Silicone feet 12x3mm | anti-slip feet for case | [link](https://www.aliexpress.com/item/1005006954839245.html) | 0.72€/4 | 4 | 0.72€ | 80.37€ |
 | PETG Filament | 3D printing filament for case | [link](https://www.aurapol.com/cz/p/aurapol-pet-g-filament-army-panzer-grau-1-kg-1-75-mm) | 17.7€/kg | 1 | 17.7€ | 98.07€
+| PCB | w/o assembly (estimate) | [link](https://www.jlcpcb.com/) | 17.00€ | 1 | 17.00€ | 115.07€
