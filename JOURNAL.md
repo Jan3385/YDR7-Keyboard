@@ -76,3 +76,11 @@ Also due to the size of a keyboard which is really big I made sliced versions of
 ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODcwNywicHVyIjoiYmxvYl9pZCJ9fQ==--8397906cdfe4fefbc2564b7596258bcad125a19e/image.png)
   
 
+## 11/6/2025 - README, BOM & PCB updates, finalizing  
+
+Updated the README, BOM and the PCB with a capacitor, grounding some pins etc
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODk0NCwicHVyIjoiYmxvYl9pZCJ9fQ==--647bd0510e6ad18ac2d32020d0d3d75a7de5373e/image.png)
+
+Generally finalized the project, double-checked some stuff etc. just so I can be pretty sure most of it is right  
+
