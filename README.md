@@ -37,7 +37,7 @@ Due to their size its impossible to print an entire piece at once, thats why the
 ![Sliced case](/CAD/Sliced/slided-parts.png)
 
 > [!WARNING]
-> Due to the size of the keyboard, even the sliced version requires minimal 216 x 139 mm printing plate
+> Due to the size of the keyboard, even the sliced version requires 216 x 139 mm or larger printing plate
 
 ## Compiling & flashing firmware
 
