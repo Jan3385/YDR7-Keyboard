@@ -84,3 +84,17 @@ Updated the README, BOM and the PCB with a capacitor, grounding some pins etc
 
 Generally finalized the project, double-checked some stuff etc. just so I can be pretty sure most of it is right  
 
+## 11/7/2025 - BOM updated and made final CAD assembly  
+
+I updated my BOM to lower the price as much as I think I safely can without ordering parts that wont work or for example switches that dont support RGB etc. Also got banned on aliexpress for making my first account for some reason lol
+
+I will also keep the SMDs since I already have most of the SMD parts at home so I wont be using the grant to buy them and I know how to solder them reliably
+
+The final cost will be lower since I wont be buying most SMD components, screws, hot-melt inserts etc. but I am making the BOM for a person that only has basic components like a soldering iron and solder wire so thats why I put them there
+
+Also made the final assembly with the PCB inside of it
+
+![assembly](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTE5MiwicHVyIjoiYmxvYl9pZCJ9fQ==--69f028c71f01eb9d931c7cfceca5027796ccdcf5/assembly.png)
+
+  
+
