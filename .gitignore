@@ -5,6 +5,8 @@
 .vscode/
 Firmware/build/
 
+*.xlsl
+
 # Temporary files
 *.000
 *.bak
