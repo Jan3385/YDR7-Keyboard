@@ -98,3 +98,12 @@ Also made the final assembly with the PCB inside of it
 
   
 
+## 11/8/2025 - Fixed PCB and updated assembly  
+
+I fixed an issue with the PCB having one switch incorrectly offseted so I had to fix that row which took a while and after that I searched for 3D files for the OLED and switches to add to the assembly. I didnt find the exact match for the display as it has a bit wierd pinout but I think it server well enough for the purpose of showing how the final product will look like
+
+I first tried to put the switches into the assembly directly but after some time I realized it was easier to just modify the 3D part for the switches on the PCB directly
+
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6OTUyOSwicHVyIjoiYmxvYl9pZCJ9fQ==--c30d13257bb84d59830dbe79de8619c48cb79b5d/image.png)
+  
+
