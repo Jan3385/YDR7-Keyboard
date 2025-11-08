@@ -1,7 +1,7 @@
 
-  <svg width='1213.4999639999999px'
+  <svg width='1209.0017639999999px'
        height='371.9982px'
-       viewBox='0 0 1213.4999639999999 371.9982'
+       viewBox='0 0 1209.0017639999999 371.9982'
        xmlns='http://www.w3.org/2000/svg'
        xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -31,7 +31,7 @@
     </defs>
 
     <g transform='translate(10,10)'>
-      <rect width="1193.4999639999999" height="351.9982"
+      <rect width="1189.0017639999999" height="351.9982"
             stroke="#ddd" stroke-width="1" fill="#eeeeee" rx="6"/>
       <g transform='translate(5,5)'>
         
@@ -488,24 +488,24 @@
 
   
     <!-- Outer Border -->
-    <rect x="968.499964" y="1"
+    <rect x="964.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc" class="outer border"/>
     
     <!-- Outer Fill -->
-    <rect x="968.499964" y="1"
+    <rect x="964.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc"/>
     
 
     
       <!-- Inner Border -->
-      <rect x="974.499964" y="4"
+      <rect x="970.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc" class="inner border"/>
       
       <!-- Inner Fill -->
-      <rect x="974.499964" y="4"
+      <rect x="970.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc"/>
       
@@ -520,24 +520,24 @@
 
   
     <!-- Outer Border -->
-    <rect x="1022.499964" y="1"
+    <rect x="1018.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc" class="outer border"/>
     
     <!-- Outer Fill -->
-    <rect x="1022.499964" y="1"
+    <rect x="1018.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc"/>
     
 
     
       <!-- Inner Border -->
-      <rect x="1028.499964" y="4"
+      <rect x="1024.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc" class="inner border"/>
       
       <!-- Inner Fill -->
-      <rect x="1028.499964" y="4"
+      <rect x="1024.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc"/>
       
@@ -552,24 +552,24 @@
 
   
     <!-- Outer Border -->
-    <rect x="1076.4999639999999" y="1"
+    <rect x="1072.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc" class="outer border"/>
     
     <!-- Outer Fill -->
-    <rect x="1076.4999639999999" y="1"
+    <rect x="1072.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc"/>
     
 
     
       <!-- Inner Border -->
-      <rect x="1082.4999639999999" y="4"
+      <rect x="1078.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc" class="inner border"/>
       
       <!-- Inner Fill -->
-      <rect x="1082.4999639999999" y="4"
+      <rect x="1078.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc"/>
       
@@ -584,24 +584,24 @@
 
   
     <!-- Outer Border -->
-    <rect x="1130.4999639999999" y="1"
+    <rect x="1126.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc" class="outer border"/>
     
     <!-- Outer Fill -->
-    <rect x="1130.4999639999999" y="1"
+    <rect x="1126.0017639999999" y="1"
           width="52" height="52"
           rx="5" fill="#cccccc"/>
     
 
     
       <!-- Inner Border -->
-      <rect x="1136.4999639999999" y="4"
+      <rect x="1132.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc" class="inner border"/>
       
       <!-- Inner Fill -->
-      <rect x="1136.4999639999999" y="4"
+      <rect x="1132.0017639999999" y="4"
             width="40" height="40"
             rx="5" fill="#fcfcfc"/>
       
