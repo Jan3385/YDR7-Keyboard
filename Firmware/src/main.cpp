@@ -15,20 +15,23 @@ int main(){
 
     tusb_init();
 
+    bool pressedA = false;
+
     while (true) {
         tud_task();
 
         if( !tud_hid_ready() ) continue;
 
-        uint8_t report[6] = { HID_KEY_A };
-        tud_hid_keyboard_report(0, 0, report);
+        if(!pressedA){
+            uint8_t report[6] = { HID_KEY_A };
+            tud_hid_keyboard_report(0, 0, report);
+            pressedA = true;
+        }
 
-        sleep_ms(50); // delay between presses
+        sleep_ms(50);
 
         // release all keys
         tud_hid_keyboard_report(0, 0, nullptr);
-
-        sleep_ms(50);
     }
 
     return 0;
