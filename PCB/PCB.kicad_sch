@@ -40983,7 +40983,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4k7"
 			(at 335.28 135.8899 0)
 			(effects
 				(font
@@ -41397,7 +41397,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4k7"
 			(at 342.9 135.8899 0)
 			(effects
 				(font
