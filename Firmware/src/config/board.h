@@ -65,6 +65,11 @@ const uint8_t K_COL_PINS[K_COLS] = {
 #define OLED_SCL_PIN 1
 
 // LED SK6812 array
+#define NUM_OF_LEDS 2
 #define LED_PIN 27
+
+// Unused pins to unpower
+#define UNUSED_PINS_COUNT 2
+#define UNUSED_PINS { 34, 35 }
 
 #endif

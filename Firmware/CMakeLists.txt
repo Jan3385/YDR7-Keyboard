@@ -12,6 +12,7 @@ pico_sdk_init()
 
 add_executable(Keyboard_Firmware
     src/main.cpp
+    src/lib/ws2812/ws2812.cpp
 )
 
 target_include_directories(Keyboard_Firmware
@@ -19,9 +20,13 @@ target_include_directories(Keyboard_Firmware
     ${CMAKE_CURRENT_LIST_DIR}/src
 )
 
+pico_generate_pio_header(Keyboard_Firmware ${CMAKE_CURRENT_LIST_DIR}/src/lib/ws2812/ws2812.pio)
+
+
 target_link_libraries(Keyboard_Firmware 
     pico_stdlib
     hardware_i2c
+    hardware_pio
     tinyusb_device
     tinyusb_board
 )

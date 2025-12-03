@@ -1,4 +1,5 @@
 #include <pico/stdlib.h>
+#include <stdio.h> // Add for debug output
 
 #include "config/user_config.h"
 
@@ -15,23 +16,25 @@ int main(){
 
     tusb_init();
 
-    bool pressedA = false;
+    gpio_put(K_COL3_PIN, 1); // For testing: set one column high
 
     while (true) {
         tud_task();
 
         if( !tud_hid_ready() ) continue;
 
-        if(!pressedA){
+        if (gpio_get(K_ROW5_PIN)) {
             uint8_t report[6] = { HID_KEY_A };
             tud_hid_keyboard_report(0, 0, report);
-            pressedA = true;
+            LED::LedArray.fill(WS2812::RGB(200,0,0));
+            LED::LedArray.show();
+        } else {
+            tud_hid_keyboard_report(0, 0, nullptr);
+            LED::LedArray.fill(WS2812::RGB(0,0,0));
+            LED::LedArray.show();
         }
 
-        sleep_ms(50);
-
-        // release all keys
-        tud_hid_keyboard_report(0, 0, nullptr);
+        sleep_ms(10);
     }
 
     return 0;
