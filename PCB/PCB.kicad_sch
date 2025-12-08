@@ -5337,16 +5337,6 @@
 	)
 	(wire
 		(pts
-			(xy 388.62 220.98) (xy 388.62 219.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "001522f5-7797-4223-94f9-f5446492a7c6")
-	)
-	(wire
-		(pts
 			(xy 224.79 58.42) (xy 224.79 73.66)
 		)
 		(stroke
@@ -5444,6 +5434,16 @@
 			(type default)
 		)
 		(uuid "07d04409-1f7f-4704-982d-117d01ec709f")
+	)
+	(wire
+		(pts
+			(xy 398.78 224.79) (xy 398.78 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07fa3ec2-9659-4945-8464-92eafe2fb228")
 	)
 	(wire
 		(pts
@@ -5647,6 +5647,16 @@
 	)
 	(wire
 		(pts
+			(xy 381 226.06) (xy 378.46 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15af9ced-188a-46b0-867e-4f7e32326228")
+	)
+	(wire
+		(pts
 			(xy 200.66 134.62) (xy 200.66 149.86)
 		)
 		(stroke
@@ -5754,6 +5764,16 @@
 			(type default)
 		)
 		(uuid "1d61dd6a-c1cf-48a5-ac4d-adbe8050baab")
+	)
+	(wire
+		(pts
+			(xy 388.62 218.44) (xy 388.62 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d7b2a47-0d51-4e8b-9dba-422203720c02")
 	)
 	(wire
 		(pts
@@ -6657,6 +6677,16 @@
 	)
 	(wire
 		(pts
+			(xy 381 242.57) (xy 378.46 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50e53264-0068-4537-9a6d-a45fdcbab063")
+	)
+	(wire
+		(pts
 			(xy 63.5 88.9) (xy 63.5 109.22)
 		)
 		(stroke
@@ -6694,6 +6724,16 @@
 			(type default)
 		)
 		(uuid "53f14865-48e2-4d3d-943d-0c14cde13153")
+	)
+	(wire
+		(pts
+			(xy 381 224.79) (xy 381 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54706dc1-246f-4de9-94f4-f19df1af72e2")
 	)
 	(wire
 		(pts
@@ -7187,6 +7227,16 @@
 	)
 	(wire
 		(pts
+			(xy 381 241.3) (xy 381 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69af380a-f4b3-4216-aa79-960d1bb9246e")
+	)
+	(wire
+		(pts
 			(xy 270.51 281.94) (xy 280.67 281.94)
 		)
 		(stroke
@@ -7624,6 +7674,16 @@
 			(type default)
 		)
 		(uuid "8043e536-7306-44e6-8ad9-fe1f9528254c")
+	)
+	(wire
+		(pts
+			(xy 398.78 226.06) (xy 396.24 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "808d56f2-4f43-4ca0-a94f-a12f566e6294")
 	)
 	(wire
 		(pts
@@ -8577,7 +8637,7 @@
 	)
 	(wire
 		(pts
-			(xy 370.84 220.98) (xy 370.84 219.71)
+			(xy 370.84 218.44) (xy 370.84 219.71)
 		)
 		(stroke
 			(width 0)
@@ -8764,6 +8824,16 @@
 			(type default)
 		)
 		(uuid "c10cb394-636e-444f-a0b7-17a0be231a36")
+	)
+	(wire
+		(pts
+			(xy 370.84 234.95) (xy 370.84 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1696d65-e9d1-4c81-86fa-d2ec1e8493d1")
 	)
 	(wire
 		(pts
@@ -9194,16 +9264,6 @@
 			(type default)
 		)
 		(uuid "d8af282a-2328-4cbe-9979-a977a557bdfc")
-	)
-	(wire
-		(pts
-			(xy 370.84 237.49) (xy 370.84 236.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d8eb38f9-4011-4773-ac8a-17a3150cdaf5")
 	)
 	(wire
 		(pts
@@ -12395,7 +12455,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-14_W11.48mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 396.24 219.71 0)
 			(effects
 				(font
@@ -14610,7 +14670,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-14_W11.48mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 378.46 236.22 0)
 			(effects
 				(font
@@ -14893,6 +14953,72 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "S71")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 381 224.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "190b973a-85f4-4cd0-adcc-d21c1f10ef3c")
+		(property "Reference" "#PWR0225"
+			(at 381 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 381 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 381 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 381 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 381 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "157e304e-1a48-4c8b-b2b3-c59281bedfee")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0225")
 					(unit 1)
 				)
 			)
@@ -15336,7 +15462,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-14_W11.48mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 350.52 220.98 0)
 			(effects
 				(font
@@ -15620,6 +15746,72 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
+		(at 388.62 218.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1d3c24b3-8148-4254-b913-eebd05435c3d")
+		(property "Reference" "#PWR0229"
+			(at 388.62 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 388.62 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 388.62 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 388.62 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 388.62 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e575ba61-3ecb-4495-a92f-3fa126b4de4a")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0229")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
 		(at 264.16 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15679,72 +15871,6 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "#PWR0137")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 370.84 237.49 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1da19d2b-b497-4c18-87d6-6d567c50480c")
-		(property "Reference" "#PWR0226"
-			(at 370.84 243.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 370.84 242.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 370.84 237.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 370.84 237.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 370.84 237.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b54e1227-1c64-4990-9555-2a5b285e3586")
-		)
-		(instances
-			(project "PCB"
-				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
-					(reference "#PWR0226")
 					(unit 1)
 				)
 			)
@@ -18326,6 +18452,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 381 241.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2d64fa7f-0140-40b0-a37f-7d2f4e706d92")
+		(property "Reference" "#PWR0228"
+			(at 381 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 381 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 381 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 381 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 381 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5578694c-628c-45cc-9f47-94548f2461e4")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0228")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 264.16 243.84 0)
 		(unit 1)
@@ -18423,7 +18615,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-14_W11.48mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 378.46 219.71 0)
 			(effects
 				(font
@@ -21762,72 +21954,6 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "D142")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 388.62 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3c9012a8-8406-4b84-9963-e4db952ce4e8")
-		(property "Reference" "#PWR0225"
-			(at 388.62 227.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 388.62 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 388.62 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 388.62 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 388.62 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "682b0526-567c-4654-b35d-b9a213fc76df")
-		)
-		(instances
-			(project "PCB"
-				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
-					(reference "#PWR0225")
 					(unit 1)
 				)
 			)
@@ -28279,7 +28405,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Module:RaspberryPi_Pico_Common_Unspecified"
+		(property "Footprint" "Module:RaspberryPi_Pico_SMD_HandSolder"
 			(at 370.84 203.2 0)
 			(effects
 				(font
@@ -32952,6 +33078,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 398.78 224.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7ef2f321-d542-46cc-be6d-e0f3dab40a0f")
+		(property "Reference" "#PWR0230"
+			(at 398.78 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 398.78 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 398.78 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 398.78 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 398.78 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea6b4ab0-8e94-41cd-8821-ded5a41ac187")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0230")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "WORKING_LED_SK6812:SK6812MINI")
 		(at 184.15 119.38 0)
 		(unit 1)
@@ -33329,7 +33521,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:SMDIP-14_W11.48mm"
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 350.52 236.22 0)
 			(effects
 				(font
@@ -37713,6 +37905,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 370.84 218.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "96083e6f-cf9f-4289-af2d-13fb6a78d4f2")
+		(property "Reference" "#PWR0224"
+			(at 370.84 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 370.84 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 370.84 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 370.84 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 370.84 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4db5d9b8-22a2-4146-816b-5fa4a225c14d")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0224")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 191.77 78.74 0)
 		(unit 1)
@@ -38786,72 +39044,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 370.84 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9a6775cb-3029-43a0-8a77-a521531ae501")
-		(property "Reference" "#PWR0224"
-			(at 370.84 227.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 370.84 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 370.84 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 370.84 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 370.84 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "aee21b23-2111-4e69-b8d0-99ba385b9e12")
-		)
-		(instances
-			(project "PCB"
-				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
-					(reference "#PWR0224")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "ScottoKeebs:Placeholder_Keyswitch")
 		(at 110.49 132.08 0)
 		(unit 1)
@@ -39553,7 +39745,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x04_P1.00mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 384.81 101.6 0)
 			(effects
 				(font
@@ -47532,6 +47724,72 @@
 			(project "PCB"
 				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
 					(reference "D169")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 370.84 234.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c58216f8-b660-453a-9232-d55a1aa76cf9")
+		(property "Reference" "#PWR0226"
+			(at 370.84 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 370.84 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 370.84 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 370.84 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 370.84 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "28394842-8419-4d52-88d7-c72384bfd775")
+		)
+		(instances
+			(project "PCB"
+				(path "/9eec8c31-e2e7-4ce8-a19c-313dbd6669b7"
+					(reference "#PWR0226")
 					(unit 1)
 				)
 			)
