@@ -1,3 +1,14 @@
+/**
+ * BOARD CONFIG FILE
+ * this file contains all hardware specific settings
+ * you should only modify this file for direct hardware changes to your keyboard
+ * DO NOT modify this file if you
+ *  1. dont know what you are doing
+ *  2. have not changed the hardware of your keyboard (such as changing the keyboard pinout or flashing a different keyboard model)
+ * 
+ * Modifying this file may result in permanent damage to your hardware!
+ */
+
 #ifndef BOARD_H
 #define BOARD_H
 

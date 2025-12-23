@@ -10,10 +10,6 @@
 #include "components/Keyboard.h"
 
 int main(){
-    #ifdef ENABLE_STDIO
-    stdio_init_all();
-    #endif
-
     PinSetup_ALL();
 
     tusb_init();

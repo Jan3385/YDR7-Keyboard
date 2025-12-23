@@ -6,6 +6,7 @@
 #include "config/board.h"
 
 #ifdef ENABLE_DEBUG_FUNCTIONS
+
 bool Keyboard::IsKeyboardKeyPressed()
 {
     bool found = false;
@@ -24,6 +25,9 @@ bool Keyboard::IsKeyboardKeyPressed()
 
     return found;
 }
+
+#endif
+
 uint8_t* Keyboard::GetKeyPressIndexes()
 {
     static uint8_t keyIndexes[6] = { 255, 255, 255, 255, 255, 255 };
@@ -54,4 +58,3 @@ uint8_t* Keyboard::GetKeyPressIndexes()
 
     return keyIndexes;
 }
-#endif
