@@ -65,8 +65,19 @@ const uint8_t K_COL_PINS[K_COLS] = {
 #define OLED_SCL_PIN 1
 
 // LED SK6812 array
-#define NUM_OF_LEDS 1
+#define NUM_OF_LEDS 103
 #define LED_PIN 27
+
+const uint8_t KEYBOARD_KEY_TO_LED_INDEX[K_COLS * K_ROWS] = {
+    102,101,100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89,
+     67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
+     66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53,
+     33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 0 ,
+     32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 0 , 0 ,
+     4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12, 20, 3 , 2 , 1 , 0 , // <- real index 0
+     13, 19, 18, 17, 46, 47, 48, 52, 51, 50, 81, 82, 83, 0 ,
+     14, 15, 16, 49, 84, 88, 87, 86, 85, 0 , 0 , 0 , 0 , 0
+};
 
 // Unused pins to unpower
 #define UNUSED_PINS_COUNT 2

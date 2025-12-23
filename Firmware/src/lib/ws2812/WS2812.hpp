@@ -25,6 +25,9 @@ class WS2812 {
         WS2812(uint pin, uint length, PIO pio, uint sm, DataByte b1, DataByte b2, DataByte b3, DataByte b4);
         ~WS2812();
 
+        static uint32_t RGB(uint8_t value){
+            return (uint32_t)(value) << 16 | (uint32_t)(value) << 8 | (uint32_t)(value);
+        }
         static uint32_t RGB(uint8_t red, uint8_t green, uint8_t blue) {
             return (uint32_t)(blue) << 16 | (uint32_t)(green) << 8 | (uint32_t)(red);
         };
