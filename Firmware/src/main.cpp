@@ -24,7 +24,7 @@ int main(){
 
         uint8_t* pressedKeys = Keyboard::GetKeyPressIndexes();
         if (pressedKeys) {
-            LED::LedArray.fill(WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP));
+            LED::LedArray.fill(WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP, 0, 0));
 
             uint8_t report[6] = { 0 };
 
