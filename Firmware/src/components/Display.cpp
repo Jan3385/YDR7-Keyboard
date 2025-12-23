@@ -193,6 +193,8 @@ void Display::InitialScreenWTest()
     uint8_t halfHeight = DISPLAY_HEIGHT / 2 - FONT_HEIGHT / 2;
     Command(OLED_INVERT_DISPLAY);
     Display::DrawText(halfWidth, halfHeight, PRODUCT_NAME, true);
+    Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT, DISPLAY_WIDTH, FONT_HEIGHT, true);
+    Display::DrawText(0, DISPLAY_HEIGHT - FONT_HEIGHT, "Waiting for USB protocol", false);
     Display::Update();
 }
 
