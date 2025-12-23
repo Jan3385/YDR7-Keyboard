@@ -12,16 +12,20 @@
 
 int main(){
     PinSetup_ALL();
+    Display::InitialScreenWTest();
 
     tusb_init();
 
+    do{
+        tud_task();
+        sleep_ms(1);
+    }while(!tud_hid_ready());
+    
+    sleep_ms(500);
+    Display::ClearInitialScreen();
+
     while (true) {
         tud_task();
-
-        if( !tud_hid_ready() ) {
-            sleep_ms(1);
-            continue;
-        }
 
         uint8_t* pressedKeys = Keyboard::GetKeyPressIndexes();
         if (pressedKeys) {

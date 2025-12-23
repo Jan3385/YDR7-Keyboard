@@ -28,6 +28,7 @@ target_link_libraries(Keyboard_Firmware
     pico_stdlib
     hardware_i2c
     hardware_pio
+    hardware_adc
     tinyusb_device
     tinyusb_board
 )

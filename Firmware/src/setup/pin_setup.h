@@ -4,6 +4,7 @@
 #include "hardware/i2c.h"
 #include "config/user_config.h"
 #include "config/board.h"
+#include "components/Display.h"
 
 namespace Keyboard{
     inline void Setup(){
@@ -22,18 +23,10 @@ namespace Keyboard{
         }
     }
 }
-namespace Display{
-    inline void Setup(){
-        i2c_init(OLED_I2C_PORT, OLED_I2C_FREQUENCY);
-
-        gpio_set_function(OLED_SDA_PIN, GPIO_FUNC_I2C);
-        gpio_set_function(OLED_SCL_PIN, GPIO_FUNC_I2C);
-    }
-}
 
 inline void PinSetup_ALL(){
-    Keyboard::Setup();
     Display::Setup();
+    Keyboard::Setup();
 
     // Unpower unused pins
     const uint8_t unused_pins[] = UNUSED_PINS;

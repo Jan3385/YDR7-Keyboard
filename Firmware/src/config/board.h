@@ -72,6 +72,7 @@ const uint8_t K_COL_PINS[K_COLS] = {
 
 // Oled Display
 #define OLED_I2C_PORT i2c0
+#define OLED_I2C_ADDRESS 0x3C
 #define OLED_SDA_PIN 0
 #define OLED_SCL_PIN 1
 
