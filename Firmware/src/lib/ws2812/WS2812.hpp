@@ -24,6 +24,8 @@ class WS2812 {
         WS2812(uint pin, uint length, PIO pio, uint sm, DataByte b1, DataByte b2, DataByte b3);
         WS2812(uint pin, uint length, PIO pio, uint sm, DataByte b1, DataByte b2, DataByte b3, DataByte b4);
         ~WS2812();
+        
+        uint32_t GetColor(uint index) const;
 
         static uint32_t RGB(uint8_t value){
             return (uint32_t)(value) << 16 | (uint32_t)(value) << 8 | (uint32_t)(value);
@@ -44,6 +46,8 @@ class WS2812 {
         void fill(uint32_t color, uint first, uint count);
         void show();
 
+        void pushColor(uint32_t color);
+
     private:
         uint pin;
         uint length;
@@ -54,7 +58,7 @@ class WS2812 {
 
         void initialize(uint pin, uint length, PIO pio, uint sm, DataByte b1, DataByte b2, DataByte b3, DataByte b4);
         uint32_t convertData(uint32_t rgbw);
-
+        uint32_t convertDataBack(uint32_t data) const;
 };
 
 #endif

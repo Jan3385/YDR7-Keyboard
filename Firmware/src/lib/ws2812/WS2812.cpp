@@ -35,6 +35,11 @@ WS2812::~WS2812() {
     
 }
 
+uint32_t WS2812::GetColor(uint index) const
+{
+    return convertDataBack(data[index]);
+}
+
 void WS2812::initialize(uint pin, uint length, PIO pio, uint sm, DataByte b1, DataByte b2, DataByte b3, DataByte b4) {
     this->pin = pin;
     this->length = length;
@@ -74,6 +79,32 @@ uint32_t WS2812::convertData(uint32_t rgbw) {
     }
     return result;
 }
+uint32_t WS2812::convertDataBack(uint32_t data) const {
+    // Compensate for extra shift in convertData
+    data >>= 8;
+    uint8_t r = 0, g = 0, b = 0, w = 0;
+    for (int i = 3; i >= 0; i--) {
+        uint8_t byte = data & 0xFF;
+        switch (bytes[i]) {
+            case RED:
+                r = byte;
+                break;
+            case GREEN:
+                g = byte;
+                break;
+            case BLUE:
+                b = byte;
+                break;
+            case WHITE:
+                w = byte;
+                break;
+            default:
+                break;
+        }
+        data >>= 8;
+    }
+    return ((uint32_t)w << 24) | ((uint32_t)b << 16) | ((uint32_t)g << 8) | r;
+}
 
 void WS2812::setPixelColor(uint index, uint32_t color) {
     if (index < length) {
@@ -109,7 +140,7 @@ void WS2812::fill(uint32_t color, uint first, uint count) {
 }
 
 void WS2812::show() {
-    #if ENABLE_STDIO
+    #ifdef ENABLE_STDIO
     for (uint i = 0; i < length; i++) {
         printf("WS2812 / Put data: %08X\n", data[i]);
     }
@@ -117,4 +148,12 @@ void WS2812::show() {
     for (uint i = 0; i < length; i++) {
         pio_sm_put_blocking(pio, sm, data[i]);
     }
+}
+
+void WS2812::pushColor(uint32_t color)
+{
+    for (int i = length - 1; i > 0; --i) {
+        data[i] = data[i - 1];
+    }
+    data[0] = convertData(color);
 }

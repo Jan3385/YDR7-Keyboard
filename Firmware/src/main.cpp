@@ -8,6 +8,7 @@
 #include "setup/pin_setup.h"
 
 #include "components/Keyboard.h"
+#include "components/LED.h"
 
 int main(){
     PinSetup_ALL();
@@ -24,27 +25,27 @@ int main(){
 
         uint8_t* pressedKeys = Keyboard::GetKeyPressIndexes();
         if (pressedKeys) {
-            LED::LedArray.fill(WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP, 0, 0));
-
             uint8_t report[6] = { 0 };
 
             for(uint8_t i = 0; i < 6; i++){
                 if(pressedKeys[i] != 255){
                     report[i] = Keyboard::KeyMap[pressedKeys[i]];
-                    LED::LedArray.setPixelColor(
+                    
+                    LED::ChangeColor(
                         KEYBOARD_KEY_TO_LED_INDEX[pressedKeys[i]], 
-                        WS2812::RGB(0,LED_BRIGHTNESS_VALUE_CAP,0)
+                        WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP * 1.5,0,0), 
+                        15
                     );
                 } else break;
             }
                 
             tud_hid_keyboard_report(0, 0, report);
-            LED::LedArray.show();
         } else {
             tud_hid_keyboard_report(0, 0, nullptr);
-            LED::LedArray.fill(WS2812::RGB(0,0,5));
-            LED::LedArray.show();
+            LED::SetBackgroundColor(WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP / 3, LED_BRIGHTNESS_VALUE_CAP / 3, LED_BRIGHTNESS_VALUE_CAP / 3), 15);
         }
+        LED::Tick();
+        LED::Show();
 
         sleep_ms(10);
     }

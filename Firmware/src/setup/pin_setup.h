@@ -2,12 +2,11 @@
 #define PIN_SETUP_H
 
 #include "hardware/i2c.h"
+#include "config/user_config.h"
 #include "config/board.h"
 
-#include "lib/ws2812/WS2812.hpp"
-
 namespace Keyboard{
-    void Setup(){
+    inline void Setup(){
         // row pins as input
         for(uint8_t r = 0; r < K_ROWS; r++){
             gpio_init(K_ROW_PINS[r]);
@@ -24,31 +23,17 @@ namespace Keyboard{
     }
 }
 namespace Display{
-    void Setup(){
+    inline void Setup(){
         i2c_init(OLED_I2C_PORT, OLED_I2C_FREQUENCY);
 
         gpio_set_function(OLED_SDA_PIN, GPIO_FUNC_I2C);
         gpio_set_function(OLED_SCL_PIN, GPIO_FUNC_I2C);
     }
 }
-namespace LED{
-    WS2812 LedArray(
-        LED_PIN, 
-        NUM_OF_LEDS, 
-        pio0, 
-        0, 
-        WS2812::FORMAT_GRB
-    );
-    void Setup(){
-        LedArray.fill(WS2812::RGB(0,0,0));
-        LedArray.show();
-    }
-}
 
-void PinSetup_ALL(){
+inline void PinSetup_ALL(){
     Keyboard::Setup();
     Display::Setup();
-    LED::Setup();
 
     // Unpower unused pins
     const uint8_t unused_pins[] = UNUSED_PINS;
