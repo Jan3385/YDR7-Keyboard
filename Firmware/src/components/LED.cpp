@@ -39,6 +39,24 @@ uint32_t ColorLerp(uint32_t colorA, uint32_t colorB, float t)
     return (w << 24) | (b << 16) | (g << 8) | r;
 }
 
+uint32_t RGBToPackedColor(const LED::RGB& color)
+{
+    static constexpr float COLOR_TO_RGB_CAP = LED_BRIGHTNESS_VALUE_CAP / 255.0f;
+
+    uint8_t avarageRGBValue = ((color.r + color.g + color.b) * COLOR_TO_RGB_CAP) / 3;
+    float globalScale = 1.0f;
+    if(avarageRGBValue > LED_BRIGHTNESS_VALUE_CAP){
+        globalScale = static_cast<float>(LED_BRIGHTNESS_VALUE_CAP) / avarageRGBValue;
+    }
+
+
+    return WS2812::RGB(
+        color.r * globalScale,
+        color.g * globalScale,
+        color.b * globalScale
+    );
+}
+
 namespace LED{
     WS2812 LedArray(
         LED_PIN,
@@ -61,17 +79,31 @@ void LED::SetLocalBrightness(uint8_t brightness)
     LED::brightness = brightness;
 }
 
-void LED::SetBackgroundColor(uint32_t color, uint16_t duration)
+void LED::SetBackgroundColor(LED::RGB color, uint16_t duration)
 {
-    backgroundColor = color;
+    uint32_t packedColor = RGBToPackedColor(color);
+
+    backgroundColor = packedColor;
     backgroundColorTime = duration;
 }
 
-void LED::ChangeColor(uint16_t ledIndex, uint32_t color, uint16_t duration)
+void LED::ChangeColor(uint16_t ledIndex, LED::RGB color, uint16_t duration)
 {
     if(ledIndex >= NUM_OF_LEDS) return;
 
     ColorChange& change = activeColorChanges[ledIndex];
+    change.start = LED::LedArray.GetColor(ledIndex);
+
+    change.end = RGBToPackedColor(color);
+
+    change.ticksTotal = duration;
+    change.ticksElapsed = 0;
+}
+void m_ChangeColor(uint16_t ledIndex, uint32_t color, uint16_t duration)
+{
+    if(ledIndex >= NUM_OF_LEDS) return;
+
+    ColorChange& change = LED::activeColorChanges[ledIndex];
     change.start = LED::LedArray.GetColor(ledIndex);
     change.end = color;
     change.ticksTotal = duration;
@@ -96,7 +128,7 @@ void LED::Tick()
         } else {
             uint32_t ledColor = LED::LedArray.GetColor(i);
             if(ledColor != backgroundColor){
-                LED::ChangeColor(i, backgroundColor, backgroundColorTime);
+                m_ChangeColor(i, backgroundColor, backgroundColorTime);
             }
         }
     }

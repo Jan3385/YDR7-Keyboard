@@ -18,6 +18,10 @@
 #define PRODUCT_NAME "YDR7 Keyboard"
 #define SERIAL_NUMBER "1"
 
+#define KEYBOARD_UPDATE_FREQUENCY 240
+#define LED_UPDATE_FREQUENCY 60 // Number of LED ticks per second
+#define DISPLAY_UPDATE_FREQUENCY 15
+
 // Keymap
 namespace Keyboard{
     const uint8_t KeyMap[K_COLS * K_ROWS] = {

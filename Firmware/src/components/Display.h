@@ -20,18 +20,10 @@
 namespace Display{
     void Setup();
 
-    void Clear();
-    void Update();
-
     void InitialScreenWTest();
     void ClearInitialScreen();
 
-    void MoveVertical(uint8_t offset);
-
-    void DrawPixel(uint8_t x, uint8_t y, bool on);
-    void DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on);
-    void DrawChar(uint8_t x, uint8_t y, char c, bool on);
-    void DrawText(uint8_t x, uint8_t y, const char* text, bool on);
+    void UpdateMenu();
 }
 
 #endif

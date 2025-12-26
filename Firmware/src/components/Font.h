@@ -1,3 +1,6 @@
+#ifndef FONT_H
+#define FONT_H
+
 #include <cstdint>
 
 #define FONT_WIDTH 5
@@ -100,3 +103,5 @@ static const uint8_t Font[] = {
 0x00, 0x11, 0x11, 0x1f, 0x04, // '}'
 0x00, 0x01, 0x03, 0x02, 0x02, // '~'
 };
+
+#endif

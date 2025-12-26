@@ -21,8 +21,12 @@ int main(){
         sleep_ms(1);
     }while(!tud_hid_ready());
     
-    sleep_ms(500);
     Display::ClearInitialScreen();
+
+    static float LEDTickTimer = 0;
+    constexpr float LEDTickTimerInterval = KEYBOARD_UPDATE_FREQUENCY / static_cast<float>(LED_UPDATE_FREQUENCY);
+    static float DisplayTickTimer = 0;
+    constexpr float DisplayTickTimerInterval = KEYBOARD_UPDATE_FREQUENCY / static_cast<float>(DISPLAY_UPDATE_FREQUENCY);
 
     while (true) {
         tud_task();
@@ -37,7 +41,7 @@ int main(){
                     
                     LED::ChangeColor(
                         KEYBOARD_KEY_TO_LED_INDEX[pressedKeys[i]], 
-                        WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP * 1.5,0,0), 
+                        LED::RGB(255,0,0), 
                         15
                     );
                 } else break;
@@ -46,12 +50,24 @@ int main(){
             tud_hid_keyboard_report(0, 0, report);
         } else {
             tud_hid_keyboard_report(0, 0, nullptr);
-            LED::SetBackgroundColor(WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP / 3, LED_BRIGHTNESS_VALUE_CAP / 3, LED_BRIGHTNESS_VALUE_CAP / 3), 15);
+            LED::SetBackgroundColor(LED::RGB(255, 255, 255), 15);
         }
-        LED::Tick();
-        LED::Show();
 
-        sleep_ms(10);
+        if(LEDTickTimer >= LEDTickTimerInterval){
+            LEDTickTimer -= LEDTickTimerInterval;
+            LED::Tick();
+            LED::Show();
+        }
+
+        if(DisplayTickTimer >= DisplayTickTimerInterval){
+            DisplayTickTimer -= DisplayTickTimerInterval;
+            Display::UpdateMenu();
+        }
+
+        static constexpr float KEYBOARD_SLEEP_TIME_MS = 1.0f / KEYBOARD_UPDATE_FREQUENCY * 1000.0f;
+        LEDTickTimer += KEYBOARD_SLEEP_TIME_MS;
+        DisplayTickTimer += KEYBOARD_SLEEP_TIME_MS;
+        sleep_ms(KEYBOARD_SLEEP_TIME_MS);
     }
 
     return 0;

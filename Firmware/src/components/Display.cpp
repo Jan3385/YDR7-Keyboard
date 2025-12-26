@@ -4,18 +4,28 @@
 #include "config/user_config.h"
 #include "Font.h"
 #include "components/LED.h"
+#include "setup/pin_setup.h"
 
 #include "tusb.h"
 #include "hardware/i2c.h"
 #include "hardware/gpio.h"
 #include "hardware/clocks.h"
-#include "hardware/adc.h"
 #include <malloc.h>
 
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 128
 
 static uint8_t buffer[DISPLAY_WIDTH * DISPLAY_HEIGHT / 8];
+
+namespace Display{
+    void Clear();
+    void Update();
+    void DrawPixel(uint8_t x, uint8_t y, bool on);
+    void DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on);
+    void DrawChar(uint8_t x, uint8_t y, char c, bool on);
+    void DrawText(uint8_t x, uint8_t y, const char* text, bool on);
+    void MoveVertical(uint8_t offset);
+}
 
 void Command(uint8_t cmd){
     uint8_t buf[2] = {0x00, cmd};
@@ -84,23 +94,25 @@ void m_ShowInitialText(const char* text, uint8_t &yOffset, uint16_t delayMs)
         yOffset -= (FONT_HEIGHT+1);
         Display::MoveVertical(FONT_HEIGHT + 1);
     }
-    sleep_ms(delayMs);
+
+    if(delayMs > 0)
+        sleep_ms(delayMs);
 }
 
 void Display::InitialScreenWTest()
 {
     uint8_t yOffset = 0;
 
-    m_ShowInitialText(PRODUCT_NAME, yOffset, 80);
+    m_ShowInitialText(PRODUCT_NAME, yOffset, 0);
 
-    m_ShowInitialText("by " MANUFACTURER_NAME, yOffset, 80);
+    m_ShowInitialText("by " MANUFACTURER_NAME, yOffset, 0);
 
-    m_ShowInitialText("SERIAL NUM: " SERIAL_NUMBER, yOffset, 80);
-    m_ShowInitialText("https://github.com/Jan3385/YDR7-Keyboard", yOffset, 50);
+    m_ShowInitialText("SERIAL NUM: " SERIAL_NUMBER, yOffset, 0);
+    m_ShowInitialText("https://github.com/Jan3385/YDR7-Keyboard", yOffset, 0);
     yOffset += FONT_HEIGHT + 8;
 
     Display::DrawRect(5, yOffset-4, DISPLAY_WIDTH-10, 1, true);
-    sleep_ms(20);
+    sleep_ms(200);
 
     Command(OLED_INVERT_DISPLAY);
     sleep_ms(80);
@@ -117,7 +129,7 @@ void Display::InitialScreenWTest()
 #endif
 
     snprintf(text, sizeof(text), "Uptime: %lu ms", to_ms_since_boot(get_absolute_time()));
-    m_ShowInitialText(text, yOffset, 50);
+    m_ShowInitialText(text, yOffset, 30);
 
     struct mallinfo mi = mallinfo();
     snprintf(text, sizeof(text), "Heap: %d / %d B", mi.ordblks, mi.fordblks);
@@ -125,15 +137,10 @@ void Display::InitialScreenWTest()
     snprintf(text, sizeof(text), "Total Heap: %d B", mi.arena);
     m_ShowInitialText(text, yOffset, 40);
 
-    adc_init();
-    adc_set_temp_sensor_enabled(true);
     // Temperature sensor channel
-    adc_select_input(4); 
-    uint16_t raw = adc_read();
-    float voltage = raw * 3.3f / (1 << 12);
-    float temp = 27.0f - (voltage - 0.706f) / 0.001721f;
+    float temp = ReadInternalTemperatureC();
     snprintf(text, sizeof(text), "Temp: %.1f C", temp);
-    m_ShowInitialText(text, yOffset, 70);
+    m_ShowInitialText(text, yOffset, 30);
 
     yOffset += 6;
     Display::DrawRect(5, yOffset-3, DISPLAY_WIDTH-10, 1, true);
@@ -142,7 +149,7 @@ void Display::InitialScreenWTest()
 
     m_ShowInitialText("Power-on Self Test", yOffset, 40);
     yOffset += 4;
-    m_ShowInitialText("OLED: OK (obv. lol)", yOffset, 20);
+    m_ShowInitialText("OLED: OK (obv. lol)", yOffset, 0);
 
     LED::LedArray.fill(0);
     for(uint8_t i = 0; i < NUM_OF_LEDS; i++){
@@ -152,7 +159,7 @@ void Display::InitialScreenWTest()
             snprintf(text, sizeof(text), "LEDs: %u / %u", i+1, NUM_OF_LEDS);
             m_ShowInitialText(text, yOffset, 0);
         }
-        sleep_us(500);
+        sleep_us(250);
     }
     snprintf(text, sizeof(text), "LEDs: %u / %u", NUM_OF_LEDS, NUM_OF_LEDS);
     m_ShowInitialText(text, yOffset, 40);
@@ -179,7 +186,8 @@ void Display::InitialScreenWTest()
             m_ShowInitialText(text, yOffset, 1500);
         }else{
             snprintf(text, sizeof(text), "Col %d: OK", c);
-            m_ShowInitialText(text, yOffset, 1);
+            m_ShowInitialText(text, yOffset, 0);
+            sleep_us(100);
         }
 
         gpio_put(K_COL_PINS[c], 0);
@@ -202,6 +210,19 @@ void Display::ClearInitialScreen()
 {
     Command(OLED_NORMAL_DISPLAY);
     Display::Clear();
+    Display::Update();
+}
+
+void Display::UpdateMenu()
+{
+    Display::Clear();
+
+    Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT - 2, DISPLAY_WIDTH, FONT_HEIGHT + 2, true);
+    char temperatureStr[16];
+    float tempC = ReadInternalTemperatureC();
+    snprintf(temperatureStr, sizeof(temperatureStr), "Temp: %.1fC", tempC);
+    Display::DrawText(5, DISPLAY_HEIGHT - FONT_HEIGHT - 1, temperatureStr, false);
+
     Display::Update();
 }
 
