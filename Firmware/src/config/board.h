@@ -95,4 +95,10 @@ const uint8_t KEYBOARD_KEY_TO_LED_INDEX[K_COLS * K_ROWS] = {
 #define UNUSED_PINS_COUNT 2
 #define UNUSED_PINS { 34, 35 }
 
+#define HID_KEY_SPECIAL_LOWEST 0xFC
+#define HID_KEY_SPECIAL_D 0xFC
+#define HID_KEY_SPECIAL_L 0xFD
+#define HID_KEY_SPECIAL_R 0xFE
+#define HID_KEY_SPECIAL_U 0xFF
+
 #endif

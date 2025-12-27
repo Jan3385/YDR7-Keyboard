@@ -12,6 +12,21 @@ struct ColorChange
 };
 bool IsActiveChange(const ColorChange& change) { return change.ticksElapsed >= 0; }
 
+namespace LED{
+    WS2812 LedArray(
+        LED_PIN,
+        NUM_OF_LEDS,
+        pio0,
+        0,
+        WS2812::FORMAT_GRB
+    );
+
+    static uint8_t brightness = 100;
+    static uint32_t backgroundColor = 0;
+    static uint16_t backgroundColorTime;
+    static ColorChange activeColorChanges[NUM_OF_LEDS];
+}
+
 uint32_t ColorLerp(uint32_t colorA, uint32_t colorB, float t)
 {
     // Clamp t
@@ -43,33 +58,18 @@ uint32_t RGBToPackedColor(const LED::RGB& color)
 {
     static constexpr float COLOR_TO_RGB_CAP = LED_BRIGHTNESS_VALUE_CAP / 255.0f;
 
-    uint8_t avarageRGBValue = ((color.r + color.g + color.b) * COLOR_TO_RGB_CAP) / 3;
+    uint16_t totalRGBValue = ((color.r + color.g + color.b) * COLOR_TO_RGB_CAP);
     float globalScale = 1.0f;
-    if(avarageRGBValue > LED_BRIGHTNESS_VALUE_CAP){
-        globalScale = static_cast<float>(LED_BRIGHTNESS_VALUE_CAP) / avarageRGBValue;
+    if(totalRGBValue > LED_BRIGHTNESS_VALUE_CAP){
+        globalScale = static_cast<float>(LED_BRIGHTNESS_VALUE_CAP) / static_cast<float>(totalRGBValue * 3.0f);
     }
 
-
+    const float brightnessScale = static_cast<float>(LED::brightness) / 100.0f;
     return WS2812::RGB(
-        color.r * globalScale,
-        color.g * globalScale,
-        color.b * globalScale
+        color.r * globalScale * brightnessScale,
+        color.g * globalScale * brightnessScale,
+        color.b * globalScale * brightnessScale
     );
-}
-
-namespace LED{
-    WS2812 LedArray(
-        LED_PIN,
-        NUM_OF_LEDS,
-        pio0,
-        0,
-        WS2812::FORMAT_GRB
-    );
-
-    static uint8_t brightness = 100;
-    static uint32_t backgroundColor = 0;
-    static uint16_t backgroundColorTime;
-    static ColorChange activeColorChanges[NUM_OF_LEDS];
 }
 
 void LED::SetLocalBrightness(uint8_t brightness)

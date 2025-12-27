@@ -20,16 +20,47 @@ static uint8_t buffer[DISPLAY_WIDTH * DISPLAY_HEIGHT / 8];
 namespace Display{
     void Clear();
     void Update();
+
     void DrawPixel(uint8_t x, uint8_t y, bool on);
+    void FlipPixel(uint8_t x, uint8_t y);
+
     void DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on);
+    void DrawBorder(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t thickness, bool on);
+
     void DrawChar(uint8_t x, uint8_t y, char c, bool on);
+    void DrawCharNeg(uint8_t x, uint8_t y, char c);
     void DrawText(uint8_t x, uint8_t y, const char* text, bool on);
+    void DrawTextNeg(uint8_t x, uint8_t y, const char* text);
+
+    void DrawTextWithBorder(uint8_t x, uint8_t y, const char* text, uint8_t borderThickness, uint8_t minBorderWidth);
+
     void MoveVertical(uint8_t offset);
 }
 
 void Command(uint8_t cmd){
     uint8_t buf[2] = {0x00, cmd};
     i2c_write_blocking(OLED_I2C_PORT, OLED_I2C_ADDRESS, buf, 2, false);
+}
+
+void Display::BTN_Up()
+{
+    Display::selectedMenu--;
+
+    if(Display::selectedMenu < 0)
+        Display::selectedMenu = 0;
+}
+void Display::BTN_Down()
+{
+    Display::selectedMenu++;
+
+    if(Display::selectedMenu > 2)
+        Display::selectedMenu = 2;
+}
+void Display::BTN_Left()
+{
+}
+void Display::BTN_Right()
+{
 }
 
 void Display::Setup()
@@ -217,6 +248,35 @@ void Display::UpdateMenu()
 {
     Display::Clear();
 
+    constexpr uint8_t LONGEST_TEXT_LENGTH = 5;
+    const char* menus[] = {
+        "INFO",
+        "RGB",
+        "THEME"
+    };
+
+    Display::DrawRect(1, 1 + Display::selectedMenu * (FONT_HEIGHT + 5), 
+        MENU_SIDE_WIDTH - 1, FONT_HEIGHT + 2, true);
+
+    Display::DrawTextWithBorder(0, 0,
+        menus[0], 1, MENU_SIDE_WIDTH);
+    Display::DrawTextWithBorder(0, FONT_HEIGHT + 5,
+        menus[1], 1, MENU_SIDE_WIDTH);
+    Display::DrawTextWithBorder(0, 2 * (FONT_HEIGHT + 5),
+        menus[2], 1, MENU_SIDE_WIDTH);
+
+    constexpr uint8_t ctxOffset = MENU_SIDE_WIDTH;
+    constexpr uint8_t ctxWidth = DISPLAY_WIDTH - ctxOffset;
+    constexpr uint8_t ctxHeight = DISPLAY_HEIGHT - ctxOffset;
+    Display::DrawBorder(ctxOffset, 0,
+        ctxWidth, ctxHeight, 1, true);
+    
+    Display::DrawText(
+        ctxOffset + ctxWidth / 2 - FONT_WIDTH * 3.5f,
+        ctxHeight / 2 - FONT_HEIGHT / 2, 
+        "CONTEXT", true
+    );
+
     Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT - 2, DISPLAY_WIDTH, FONT_HEIGHT + 2, true);
     char temperatureStr[16];
     float tempC = ReadInternalTemperatureC();
@@ -274,6 +334,16 @@ void Display::DrawPixel(uint8_t x, uint8_t y, bool on) {
         : buffer[byteIndex] &= ~bitIndex;
 }
 
+void Display::FlipPixel(uint8_t x, uint8_t y)
+{
+    if(x >= DISPLAY_WIDTH || y >= DISPLAY_HEIGHT) return;
+
+    uint16_t byteIndex = x + (y / 8) * DISPLAY_WIDTH;
+    uint8_t bitIndex = 1 << (y % 8);
+
+    buffer[byteIndex] ^= bitIndex;
+}
+
 void Display::DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on)
 {
     for(uint8_t i = 0; i < width; i++){
@@ -281,6 +351,15 @@ void Display::DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool
             DrawPixel(x + i, y + j, on);
         }
     }
+}
+
+void Display::DrawBorder(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t thickness, bool on)
+{
+    DrawRect(x, y, width, thickness, on);
+    DrawRect(x, y + height - thickness, width, thickness, on);
+
+    DrawRect(x, y, thickness, height, on);
+    DrawRect(x + width - thickness, y, thickness, height, on);
 }
 
 void Display::DrawChar(uint8_t x, uint8_t y, char c, bool on)
@@ -298,6 +377,27 @@ void Display::DrawChar(uint8_t x, uint8_t y, char c, bool on)
                     x + col, 
                     y + row, 
                     on
+                );
+            }
+            line >>= 1;
+        }
+    }
+}
+
+void Display::DrawCharNeg(uint8_t x, uint8_t y, char c)
+{
+    if(c < 32 || c > 127) return;
+
+    const uint8_t* charData = &Font[(c - 32) * FONT_WIDTH];
+
+    for(uint8_t col = 0; col < FONT_WIDTH; col++){
+        uint8_t line = charData[col];
+        for(uint8_t row = 0; row < FONT_HEIGHT; row++){
+            bool pixelOn = line & 0x01;
+            if(pixelOn){
+                FlipPixel(
+                    x + col, 
+                    y + row
                 );
             }
             line >>= 1;
@@ -324,4 +424,42 @@ void Display::DrawText(uint8_t x, uint8_t y, const char *text, bool on)
             }
         }
     }
+}
+
+void Display::DrawTextNeg(uint8_t x, uint8_t y, const char *text)
+{
+    uint8_t cursorX = x;
+    uint8_t cursorY = y;
+
+    for(size_t i = 0; text[i] != '\0'; i++){
+        char c = text[i];
+        if(c == '\n'){
+            cursorX = x;
+            cursorY += FONT_HEIGHT+1;
+        } else {
+            DrawCharNeg(cursorX, cursorY, c);
+            cursorX += FONT_WIDTH;
+            if(cursorX + FONT_WIDTH > DISPLAY_WIDTH){
+                cursorX = x;
+                cursorY += FONT_HEIGHT+1;
+            }
+        }
+    }
+}
+
+void Display::DrawTextWithBorder(uint8_t x, uint8_t y, const char *text, uint8_t borderThickness, uint8_t minBorderWidth)
+{
+    size_t textLength = strlen(text);
+
+    uint8_t textWidth = textLength * FONT_WIDTH;
+    if(textWidth < minBorderWidth)
+        textWidth = minBorderWidth;
+
+    uint8_t textHeight = FONT_HEIGHT;
+
+    DrawBorder(x, y, 
+        textWidth + borderThickness - 1, textHeight + borderThickness + 3, 
+        borderThickness, true);
+
+    DrawTextNeg(x+borderThickness+1, y+borderThickness+1, text);
 }

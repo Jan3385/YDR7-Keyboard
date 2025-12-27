@@ -17,7 +17,15 @@
 #define OLED_DISPLAY_NORMAL 0xA4
 #define OLED_DISPLAY_ALL_ON 0xA5
 
+#define MENU_SIDE_WIDTH 28
+
 namespace Display{
+    static int8_t selectedMenu = 0;
+    void BTN_Up();
+    void BTN_Down();
+    void BTN_Left();
+    void BTN_Right();
+
     void Setup();
 
     void InitialScreenWTest();

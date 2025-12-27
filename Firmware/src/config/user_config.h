@@ -30,7 +30,7 @@ namespace Keyboard{
         HID_KEY_TAB,            HID_KEY_Q,              HID_KEY_W,              HID_KEY_E,          HID_KEY_R,                  HID_KEY_T,          HID_KEY_Y,              HID_KEY_U,          HID_KEY_I,          HID_KEY_O,          HID_KEY_P,          HID_KEY_BRACKET_LEFT,   HID_KEY_BRACKET_RIGHT,      HID_KEY_BACKSLASH,
         HID_KEY_CAPS_LOCK,      HID_KEY_A,              HID_KEY_S,              HID_KEY_D,          HID_KEY_F,                  HID_KEY_G,          HID_KEY_H,              HID_KEY_J,          HID_KEY_K,          HID_KEY_L,          HID_KEY_SEMICOLON,  HID_KEY_APOSTROPHE,     HID_KEY_ENTER,              HID_KEY_NONE,
         HID_KEY_SHIFT_LEFT,     HID_KEY_Z,              HID_KEY_X,              HID_KEY_C,          HID_KEY_V,                  HID_KEY_B,          HID_KEY_N,              HID_KEY_M,          HID_KEY_COMMA,      HID_KEY_PERIOD,     HID_KEY_SLASH,      HID_KEY_SHIFT_RIGHT,    HID_KEY_NONE,               HID_KEY_NONE,
-        HID_KEY_CONTROL_LEFT,   HID_KEY_GUI_LEFT,       HID_KEY_ALT_LEFT,       HID_KEY_SPACE,      HID_KEY_ALT_RIGHT,          HID_KEY_MENU,       HID_KEY_CONTROL_RIGHT,  HID_KEY_ARROW_LEFT, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_UP,   HID_KEY_NONE,       HID_KEY_NONE,           HID_KEY_NONE,               HID_KEY_NONE, // <- special keys
+        HID_KEY_CONTROL_LEFT,   HID_KEY_GUI_LEFT,       HID_KEY_ALT_LEFT,       HID_KEY_SPACE,      HID_KEY_ALT_RIGHT,          HID_KEY_MENU,       HID_KEY_CONTROL_RIGHT,  HID_KEY_ARROW_LEFT, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_UP,   HID_KEY_SPECIAL_D,  HID_KEY_SPECIAL_L,      HID_KEY_SPECIAL_R,          HID_KEY_SPECIAL_U, // <- special keys
         HID_KEY_ARROW_RIGHT,    HID_KEY_KEYPAD_1,       HID_KEY_KEYPAD_2,       HID_KEY_KEYPAD_3,   HID_KEY_KEYPAD_4,           HID_KEY_KEYPAD_5,   HID_KEY_KEYPAD_6,       HID_KEY_KEYPAD_7,   HID_KEY_KEYPAD_8,   HID_KEY_KEYPAD_9,   HID_KEY_NUM_LOCK,   HID_KEY_KEYPAD_DIVIDE,  HID_KEY_KEYPAD_MULTIPLY,    HID_KEY_NONE,
         HID_KEY_KEYPAD_0,       HID_KEY_KEYPAD_DECIMAL, HID_KEY_KEYPAD_ENTER,   HID_KEY_KEYPAD_ADD, HID_KEY_KEYPAD_SUBTRACT,    HID_KEY_DELETE,     HID_KEY_INSERT,         HID_KEY_PAGE_UP,    HID_KEY_PAGE_DOWN,  HID_KEY_NONE,       HID_KEY_NONE,       HID_KEY_NONE,           HID_KEY_NONE,               HID_KEY_NONE, 
     };
@@ -42,7 +42,8 @@ namespace Keyboard{
 
 // *WARNING*: changing this value can result in permanent damage to the board as the LEDs may draw too much current
 // if you are unsure, leave this value as is
-#define LED_BRIGHTNESS_VALUE_CAP 35     // 0 - 255
+// The maximum cumulative R+G+B value for an LED
+#define LED_BRIGHTNESS_VALUE_CAP 30     // 0 - 765
 
 // USB Identifiers (placeholder values)
 #define USB_VENDOR_ID 0xCafe
