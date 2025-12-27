@@ -26,6 +26,7 @@ pico_generate_pio_header(Keyboard_Firmware ${CMAKE_CURRENT_LIST_DIR}/src/lib/ws2
 
 target_link_libraries(Keyboard_Firmware 
     pico_stdlib
+    pico_multicore
     hardware_i2c
     hardware_pio
     hardware_adc

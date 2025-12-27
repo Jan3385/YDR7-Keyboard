@@ -17,9 +17,10 @@
 
 static uint8_t buffer[DISPLAY_WIDTH * DISPLAY_HEIGHT / 8];
 
+static float timeSinceLastActivityMs = 0.0f;
+
 namespace Display{
     void Clear();
-    void Update();
 
     void DrawPixel(uint8_t x, uint8_t y, bool on);
     void FlipPixel(uint8_t x, uint8_t y);
@@ -44,6 +45,7 @@ void Command(uint8_t cmd){
 
 void Display::BTN_Up()
 {
+    timeSinceLastActivityMs = 0.0f;
     Display::selectedMenu--;
 
     if(Display::selectedMenu < 0)
@@ -51,6 +53,7 @@ void Display::BTN_Up()
 }
 void Display::BTN_Down()
 {
+    timeSinceLastActivityMs = 0.0f;
     Display::selectedMenu++;
 
     if(Display::selectedMenu > 2)
@@ -58,9 +61,11 @@ void Display::BTN_Down()
 }
 void Display::BTN_Left()
 {
+    timeSinceLastActivityMs = 0.0f;
 }
 void Display::BTN_Right()
 {
+    timeSinceLastActivityMs = 0.0f;
 }
 
 void Display::Setup()
@@ -90,7 +95,7 @@ void Display::Setup()
     Command(OLED_ON);
 
     Clear();
-    Update();
+    Show();
 }
 
 void Display::Clear()
@@ -99,7 +104,7 @@ void Display::Clear()
         buffer[i] = 0x00;
 }
 
-void Display::Update() {
+void Display::Show() {
     for (uint8_t page = 0; page < 16; page++) {
         Command(0xB0 | page);
         Command(0x00);
@@ -119,7 +124,7 @@ void Display::Update() {
 void m_ShowInitialText(const char* text, uint8_t &yOffset, uint16_t delayMs)
 {
     Display::DrawText(0, yOffset, text, true);
-    Display::Update();
+    Display::Show();
     yOffset += FONT_HEIGHT + 1;
     if(yOffset > DISPLAY_HEIGHT - FONT_HEIGHT){
         yOffset -= (FONT_HEIGHT+1);
@@ -175,7 +180,7 @@ void Display::InitialScreenWTest()
 
     yOffset += 6;
     Display::DrawRect(5, yOffset-3, DISPLAY_WIDTH-10, 1, true);
-    Display::Update();
+    Display::Show();
     sleep_ms(50);
 
     m_ShowInitialText("Power-on Self Test", yOffset, 40);
@@ -226,7 +231,7 @@ void Display::InitialScreenWTest()
 
     m_ShowInitialText("All tests done", yOffset, 50);
     Display::Clear();
-    Display::Update();
+    Display::Show();
 
     uint8_t halfWidth = DISPLAY_WIDTH / 2 - (strlen(PRODUCT_NAME) * FONT_WIDTH) / 2;
     uint8_t halfHeight = DISPLAY_HEIGHT / 2 - FONT_HEIGHT / 2;
@@ -234,19 +239,23 @@ void Display::InitialScreenWTest()
     Display::DrawText(halfWidth, halfHeight, PRODUCT_NAME, true);
     Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT, DISPLAY_WIDTH, FONT_HEIGHT, true);
     Display::DrawText(0, DISPLAY_HEIGHT - FONT_HEIGHT, "Waiting for USB protocol", false);
-    Display::Update();
+    Display::Show();
 }
 
 void Display::ClearInitialScreen()
 {
     Command(OLED_NORMAL_DISPLAY);
     Display::Clear();
-    Display::Update();
+    Display::Show();
 }
 
 void Display::UpdateMenu()
 {
     Display::Clear();
+
+    if(timeSinceLastActivityMs >= DISPLAY_SLEEP_TIMEOUT_MS){
+        return;
+    }
 
     constexpr uint8_t LONGEST_TEXT_LENGTH = 5;
     const char* menus[] = {
@@ -283,7 +292,7 @@ void Display::UpdateMenu()
     snprintf(temperatureStr, sizeof(temperatureStr), "Temp: %.1fC", tempC);
     Display::DrawText(5, DISPLAY_HEIGHT - FONT_HEIGHT - 1, temperatureStr, false);
 
-    Display::Update();
+    timeSinceLastActivityMs += 1000.0f / DISPLAY_UPDATE_FREQUENCY;
 }
 
 void Display::MoveVertical(uint8_t offset)

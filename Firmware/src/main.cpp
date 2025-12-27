@@ -1,5 +1,8 @@
 #include <pico/stdlib.h>
-#include <stdio.h> // Add for debug output
+#include <pico/multicore.h>
+#include <pico/mutex.h>
+
+#include <atomic>
 
 #include "config/user_config.h"
 
@@ -9,6 +12,32 @@
 
 #include "components/Keyboard.h"
 #include "components/LED.h"
+
+mutex_t LEDMutex;
+mutex_t DisplayMutex;
+
+std::atomic<bool> updateLEDRequest{false};
+std::atomic<bool> updateDisplayRequest{false};
+
+void MULTICORE_DataPushHandler(){
+    while(true){
+        if(updateLEDRequest.load(std::memory_order_acquire)){
+            mutex_enter_blocking(&LEDMutex);
+            LED::Show();
+            mutex_exit(&LEDMutex);
+
+            updateLEDRequest.store(false,  std::memory_order_release);
+        }
+        if(updateDisplayRequest.load(std::memory_order_acquire)){
+            mutex_enter_blocking(&DisplayMutex);
+            Display::Show();
+            mutex_exit(&DisplayMutex);
+            
+            updateDisplayRequest.store(false,  std::memory_order_release);
+        }
+        sleep_ms(1);
+    }
+}
 
 int main(){
     PinSetup_ALL();
@@ -27,6 +56,11 @@ int main(){
     constexpr float LEDTickTimerInterval = KEYBOARD_UPDATE_FREQUENCY / static_cast<float>(LED_UPDATE_FREQUENCY);
     static float DisplayTickTimer = 0;
     constexpr float DisplayTickTimerInterval = KEYBOARD_UPDATE_FREQUENCY / static_cast<float>(DISPLAY_UPDATE_FREQUENCY);
+
+    mutex_init(&LEDMutex);
+    mutex_init(&DisplayMutex);
+
+    multicore_launch_core1(MULTICORE_DataPushHandler);
 
     while (true) {
         tud_task();
@@ -55,13 +89,22 @@ int main(){
 
         if(LEDTickTimer >= LEDTickTimerInterval){
             LEDTickTimer -= LEDTickTimerInterval;
+
+            mutex_enter_blocking(&LEDMutex);
             LED::Tick();
-            LED::Show();
+            mutex_exit(&LEDMutex);
+            
+            updateLEDRequest.store(true, std::memory_order_release);
         }
 
         if(DisplayTickTimer >= DisplayTickTimerInterval){
             DisplayTickTimer -= DisplayTickTimerInterval;
+
+            mutex_enter_blocking(&DisplayMutex);
             Display::UpdateMenu();
+            mutex_exit(&DisplayMutex);
+
+            updateDisplayRequest.store(true, std::memory_order_release);
         }
 
         static constexpr float KEYBOARD_SLEEP_TIME_MS = 1.0f / KEYBOARD_UPDATE_FREQUENCY * 1000.0f;

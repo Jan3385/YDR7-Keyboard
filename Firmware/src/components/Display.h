@@ -32,6 +32,8 @@ namespace Display{
     void ClearInitialScreen();
 
     void UpdateMenu();
+
+    void Show();
 }
 
 #endif

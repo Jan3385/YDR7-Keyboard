@@ -46,7 +46,7 @@ uint8_t* GetKeyPressIndexes()
 
     for(uint8_t c = 0; c < K_COLS; c++){
         gpio_put(K_COL_PINS[c], 1);
-        sleep_us(10);
+        sleep_us(KEYBOARD_SIGNAL_SETTLE_TIME_US);
 
         for(uint8_t r = 0; r < K_ROWS; r++){
             if(gpio_get(K_ROW_PINS[r])){

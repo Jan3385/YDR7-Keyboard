@@ -18,9 +18,14 @@
 #define PRODUCT_NAME "YDR7 Keyboard"
 #define SERIAL_NUMBER "1"
 
-#define KEYBOARD_UPDATE_FREQUENCY 240
+#define KEYBOARD_UPDATE_FREQUENCY 720
 #define LED_UPDATE_FREQUENCY 60 // Number of LED ticks per second
 #define DISPLAY_UPDATE_FREQUENCY 15
+
+// Time (in ms) without activity before the display goes to sleep
+#define DISPLAY_SLEEP_TIMEOUT_MS 10000
+
+#define KEYBOARD_SIGNAL_SETTLE_TIME_US 20
 
 // Keymap
 namespace Keyboard{
