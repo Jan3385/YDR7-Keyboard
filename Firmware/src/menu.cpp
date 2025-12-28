@@ -5,6 +5,7 @@
 #include "setup/pin_setup.h"
 
 #include "components/Display.h"
+#include "components/Keyboard.h"
 
 #include "pico/bootrom.h"
 
@@ -93,6 +94,19 @@ void RenderInfoScreen()
 
     float temp = ReadInternalTemperatureC();
     snprintf(text, sizeof(text), "Temp: %.1f C", temp);
+    Display::DrawTextCenter( ctxCenter, txtYOffset + txtSpacing * ++txtNum,
+        text, true
+    );
+
+    snprintf(text, sizeof(text), "CapsLock: %s", Keyboard::capsLockState ? "ON" : "OFF");
+    Display::DrawTextCenter( ctxCenter, txtYOffset + txtSpacing * ++txtNum,
+        text, true
+    );
+    snprintf(text, sizeof(text), "NumLock: %s", Keyboard::numLockState ? "ON" : "OFF");
+    Display::DrawTextCenter( ctxCenter, txtYOffset + txtSpacing * ++txtNum,
+        text, true
+    );
+    snprintf(text, sizeof(text), "ScrollLock: %s", Keyboard::scrollLockState ? "ON" : "OFF");
     Display::DrawTextCenter( ctxCenter, txtYOffset + txtSpacing * ++txtNum,
         text, true
     );

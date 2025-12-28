@@ -1,5 +1,6 @@
 #include "LED.h"
 
+#include "components/Keyboard.h"
 #include "setup/pin_setup.h"
 #include "config/board.h"
 
@@ -110,9 +111,40 @@ void m_ChangeColor(uint16_t ledIndex, uint32_t color, uint16_t duration)
     change.ticksElapsed = 0;
 }
 
+constexpr uint8_t NUM_SPECIAL_LEDS = 3;
+static const uint8_t specialLED[NUM_SPECIAL_LEDS] = {
+    K_CAPSLOCK_LED_INDEX,
+    K_NUMLOCK_LED_INDEX,
+    K_SCROLLLOCK_LED_INDEX
+};
+bool IsNumberInArray(uint8_t number, const uint8_t* array, size_t arraySize)
+{
+    for(size_t i = 0; i < arraySize; i++){
+        if(array[i] == number) return true;
+    }
+    return false;
+}
+
+void HandleSpecialLED(uint8_t ledIndex){
+    if(ledIndex == K_CAPSLOCK_LED_INDEX && Keyboard::capsLockState){
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+    } else if(ledIndex == K_NUMLOCK_LED_INDEX && Keyboard::numLockState){
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+    } else if(ledIndex == K_SCROLLLOCK_LED_INDEX && Keyboard::scrollLockState){
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+    } else{
+        LED::LedArray.setPixelColor(ledIndex, LED::backgroundColor);
+    }
+}
+
 void LED::Tick()
 {
     for(uint16_t i = 0; i < NUM_OF_LEDS; i++){
+        if(IsNumberInArray(i, specialLED, NUM_SPECIAL_LEDS) && i != 255){
+            HandleSpecialLED(i);
+            continue;
+        }
+
         ColorChange& change = activeColorChanges[i];
         if(IsActiveChange(change)){
             change.ticksElapsed++;

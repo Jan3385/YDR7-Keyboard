@@ -6,6 +6,10 @@
 #include "config/user_config.h"
 
 namespace Keyboard{
+extern bool capsLockState;
+extern bool numLockState;
+extern bool scrollLockState;
+
 #ifdef ENABLE_DEBUG_FUNCTIONS
     /**
      * @brief Check if any keyboard key is pressed

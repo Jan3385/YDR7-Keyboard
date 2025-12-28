@@ -80,11 +80,11 @@ int main(){
                     );
                 } else break;
             }
-                
+            LED::SetBackgroundColor(LED::RGB(128, 80, 80), 5);
             tud_hid_keyboard_report(0, 0, report);
         } else {
             tud_hid_keyboard_report(0, 0, nullptr);
-            LED::SetBackgroundColor(LED::RGB(255, 255, 255), 15);
+            LED::SetBackgroundColor(LED::RGB(128, 128, 128), 10);
         }
 
         if(LEDTickTimer >= LEDTickTimerInterval){

@@ -49,7 +49,12 @@ namespace Keyboard{
 // if you are unsure, leave this value as is
 // The maximum cumulative R+G+B value for an LED
 // precieved brightness should scale logarithmically
-#define LED_BRIGHTNESS_VALUE_CAP 25     // 0 - 765
+#define LED_BRIGHTNESS_VALUE_CAP 20     // 0 - 765
+
+// Special LED key lighting (255 - unset)
+#define K_CAPSLOCK_LED_INDEX 33
+#define K_NUMLOCK_LED_INDEX 81
+#define K_SCROLLLOCK_LED_INDEX 255
 
 // USB Identifiers (placeholder values)
 #define USB_VENDOR_ID 0xCafe

@@ -10,8 +10,11 @@
 
 namespace Keyboard{
 
-#ifdef ENABLE_DEBUG_FUNCTIONS
+bool capsLockState;
+bool numLockState;
+bool scrollLockState;
 
+#ifdef ENABLE_DEBUG_FUNCTIONS
 bool IsKeyboardKeyPressed()
 {
     bool found = false;
@@ -30,7 +33,6 @@ bool IsKeyboardKeyPressed()
 
     return found;
 }
-
 #endif
 
 uint8_t* GetKeyPressIndexes()
