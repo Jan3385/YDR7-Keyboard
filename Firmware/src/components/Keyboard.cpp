@@ -51,11 +51,7 @@ uint8_t* GetKeyPressIndexes()
         for(uint8_t r = 0; r < K_ROWS; r++){
             if(gpio_get(K_ROW_PINS[r])){
                 if(KeyMap[r * K_COLS + c] >= HID_KEY_SPECIAL_LOWEST){
-                    uint8_t specialKey = KeyMap[r * K_COLS + c];
-                    if(specialKey == HID_KEY_SPECIAL_R) Display::BTN_Right();
-                    if(specialKey == HID_KEY_SPECIAL_L) Display::BTN_Left();
-                    if(specialKey == HID_KEY_SPECIAL_D) Display::BTN_Down();
-                    if(specialKey == HID_KEY_SPECIAL_U) Display::BTN_Up();
+                    Display::SpecialkeyPressed(KeyMap[r * K_COLS + c]);
 
                     // wait for release
                     while(gpio_get(K_ROW_PINS[r])){ sleep_us(50); }

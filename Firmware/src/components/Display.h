@@ -1,6 +1,9 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
+#define DISPLAY_WIDTH 128
+#define DISPLAY_HEIGHT 128
+
 #include <cstdint>
 
 #define OLED_OFF 0xAE
@@ -20,13 +23,29 @@
 #define MENU_SIDE_WIDTH 28
 
 namespace Display{
-    static int8_t selectedMenu = 0;
-    void BTN_Up();
-    void BTN_Down();
-    void BTN_Left();
-    void BTN_Right();
+    void SpecialkeyPressed(uint8_t key);
 
     void Setup();
+
+    void Clear();
+
+    // draw functions ---
+    void DrawPixel(uint8_t x, uint8_t y, bool on);
+    void FlipPixel(uint8_t x, uint8_t y);
+
+    void DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on);
+    void DrawBorder(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t thickness, bool on);
+
+    void DrawChar(uint8_t x, uint8_t y, char c, bool on);
+    void DrawCharNeg(uint8_t x, uint8_t y, char c);
+    void DrawText(uint8_t x, uint8_t y, const char* text, bool on);
+    void DrawTextCenter(uint8_t x, uint8_t y, const char* text, bool on);
+    void DrawTextNeg(uint8_t x, uint8_t y, const char* text);
+
+    void DrawTextWithBorder(uint8_t x, uint8_t y, const char* text, uint8_t borderThickness, uint8_t minBorderWidth);
+    // ------------------
+
+    void MoveVertical(uint8_t offset);
 
     void InitialScreenWTest();
     void ClearInitialScreen();

@@ -10,7 +10,7 @@ project(YDR7_Keyboard_Firmware)
 
 pico_sdk_init()
 
-file(GLOB_RECURSE FIRMWARE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE FIRMWARE_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(Keyboard_Firmware
     ${FIRMWARE_SOURCES}

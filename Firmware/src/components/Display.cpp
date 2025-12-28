@@ -1,71 +1,37 @@
 #include "Display.h"
 
 #include "config/board.h"
-#include "config/user_config.h"
 #include "Font.h"
 #include "components/LED.h"
 #include "setup/pin_setup.h"
 
-#include "tusb.h"
+#include "menu.h"
+
 #include "hardware/i2c.h"
-#include "hardware/gpio.h"
 #include "hardware/clocks.h"
 #include <malloc.h>
 
-#define DISPLAY_WIDTH 128
-#define DISPLAY_HEIGHT 128
-
 static uint8_t buffer[DISPLAY_WIDTH * DISPLAY_HEIGHT / 8];
-
-static float timeSinceLastActivityMs = 0.0f;
-
-namespace Display{
-    void Clear();
-
-    void DrawPixel(uint8_t x, uint8_t y, bool on);
-    void FlipPixel(uint8_t x, uint8_t y);
-
-    void DrawRect(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool on);
-    void DrawBorder(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint8_t thickness, bool on);
-
-    void DrawChar(uint8_t x, uint8_t y, char c, bool on);
-    void DrawCharNeg(uint8_t x, uint8_t y, char c);
-    void DrawText(uint8_t x, uint8_t y, const char* text, bool on);
-    void DrawTextNeg(uint8_t x, uint8_t y, const char* text);
-
-    void DrawTextWithBorder(uint8_t x, uint8_t y, const char* text, uint8_t borderThickness, uint8_t minBorderWidth);
-
-    void MoveVertical(uint8_t offset);
-}
 
 void Command(uint8_t cmd){
     uint8_t buf[2] = {0x00, cmd};
     i2c_write_blocking(OLED_I2C_PORT, OLED_I2C_ADDRESS, buf, 2, false);
 }
 
-void Display::BTN_Up()
-{
-    timeSinceLastActivityMs = 0.0f;
-    Display::selectedMenu--;
+static float timeSinceLastActivityMs = 0.0f;
 
-    if(Display::selectedMenu < 0)
-        Display::selectedMenu = 0;
-}
-void Display::BTN_Down()
+void Display::SpecialkeyPressed(uint8_t key)
 {
+    if(timeSinceLastActivityMs > DISPLAY_SLEEP_TIMEOUT_MS){
+        timeSinceLastActivityMs = 0.0f;
+        return;
+    }
+    
     timeSinceLastActivityMs = 0.0f;
-    Display::selectedMenu++;
-
-    if(Display::selectedMenu > 2)
-        Display::selectedMenu = 2;
-}
-void Display::BTN_Left()
-{
-    timeSinceLastActivityMs = 0.0f;
-}
-void Display::BTN_Right()
-{
-    timeSinceLastActivityMs = 0.0f;
+    if(key == HID_KEY_SPECIAL_U) Display::BTN_Up();
+    if(key == HID_KEY_SPECIAL_D) Display::BTN_Down();
+    if(key == HID_KEY_SPECIAL_L) Display::BTN_Left();
+    if(key == HID_KEY_SPECIAL_R) Display::BTN_Right();
 }
 
 void Display::Setup()
@@ -261,10 +227,11 @@ void Display::UpdateMenu()
     const char* menus[] = {
         "INFO",
         "RGB",
-        "THEME"
+        "THEME",
+        "BOOT"
     };
 
-    Display::DrawRect(1, 1 + Display::selectedMenu * (FONT_HEIGHT + 5), 
+    Display::DrawRect(1, 1 + Display::GetSelectedMenuIndex() * (FONT_HEIGHT + 5), 
         MENU_SIDE_WIDTH - 1, FONT_HEIGHT + 2, true);
 
     Display::DrawTextWithBorder(0, 0,
@@ -273,18 +240,10 @@ void Display::UpdateMenu()
         menus[1], 1, MENU_SIDE_WIDTH);
     Display::DrawTextWithBorder(0, 2 * (FONT_HEIGHT + 5),
         menus[2], 1, MENU_SIDE_WIDTH);
-
-    constexpr uint8_t ctxOffset = MENU_SIDE_WIDTH;
-    constexpr uint8_t ctxWidth = DISPLAY_WIDTH - ctxOffset;
-    constexpr uint8_t ctxHeight = DISPLAY_HEIGHT - ctxOffset;
-    Display::DrawBorder(ctxOffset, 0,
-        ctxWidth, ctxHeight, 1, true);
+    Display::DrawTextWithBorder(0, 3 * (FONT_HEIGHT + 5),
+        menus[3], 1, MENU_SIDE_WIDTH);
     
-    Display::DrawText(
-        ctxOffset + ctxWidth / 2 - FONT_WIDTH * 3.5f,
-        ctxHeight / 2 - FONT_HEIGHT / 2, 
-        "CONTEXT", true
-    );
+    Display::RenderCtxScreen();
 
     Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT - 2, DISPLAY_WIDTH, FONT_HEIGHT + 2, true);
     char temperatureStr[16];
@@ -433,6 +392,13 @@ void Display::DrawText(uint8_t x, uint8_t y, const char *text, bool on)
             }
         }
     }
+}
+
+void Display::DrawTextCenter(uint8_t x, uint8_t y, const char *text, bool on)
+{
+    uint8_t textLength = strlen(text);
+    uint8_t startX = x - (textLength * FONT_WIDTH) / 2;
+    DrawText(startX, y, text, on);
 }
 
 void Display::DrawTextNeg(uint8_t x, uint8_t y, const char *text)

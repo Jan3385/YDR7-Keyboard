@@ -48,7 +48,8 @@ namespace Keyboard{
 // *WARNING*: changing this value can result in permanent damage to the board as the LEDs may draw too much current
 // if you are unsure, leave this value as is
 // The maximum cumulative R+G+B value for an LED
-#define LED_BRIGHTNESS_VALUE_CAP 30     // 0 - 765
+// precieved brightness should scale logarithmically
+#define LED_BRIGHTNESS_VALUE_CAP 25     // 0 - 765
 
 // USB Identifiers (placeholder values)
 #define USB_VENDOR_ID 0xCafe
