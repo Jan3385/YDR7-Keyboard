@@ -5,6 +5,9 @@
 .vscode/
 Firmware/build/
 
+# WakaTime
+.wakatime-project
+
 *.xlsl
 
 # Temporary files
