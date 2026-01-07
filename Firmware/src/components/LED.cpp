@@ -3,6 +3,7 @@
 #include "components/Keyboard.h"
 #include "setup/pin_setup.h"
 #include "config/board.h"
+#include "config/themes.h"
 
 struct ColorChange
 {
@@ -127,11 +128,11 @@ bool IsNumberInArray(uint8_t number, const uint8_t* array, size_t arraySize)
 
 void HandleSpecialLED(uint8_t ledIndex){
     if(ledIndex == K_CAPSLOCK_LED_INDEX && Keyboard::capsLockState){
-        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(Theme::GetPassiveActiveColor()));
     } else if(ledIndex == K_NUMLOCK_LED_INDEX && Keyboard::numLockState){
-        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(Theme::GetPassiveActiveColor()));
     } else if(ledIndex == K_SCROLLLOCK_LED_INDEX && Keyboard::scrollLockState){
-        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(LED::RGB(255, 0, 0)));
+        LED::LedArray.setPixelColor(ledIndex, RGBToPackedColor(Theme::GetPassiveActiveColor()));
     } else{
         LED::LedArray.setPixelColor(ledIndex, LED::backgroundColor);
     }

@@ -9,6 +9,8 @@ namespace Display{
     void BTN_Left();
     void BTN_Right();
 
+    void ResetCursor();
+
     uint8_t GetSelectedMenuIndex();
 
     void RenderCtxScreen();

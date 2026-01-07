@@ -55,6 +55,9 @@ uint8_t* GetKeyPressIndexes()
                 if(KeyMap[r * K_COLS + c] >= HID_KEY_SPECIAL_LOWEST){
                     Display::SpecialkeyPressed(KeyMap[r * K_COLS + c]);
 
+                    // wait for debounce
+                    sleep_us(200);
+
                     // wait for release
                     while(gpio_get(K_ROW_PINS[r])){ sleep_us(50); }
 

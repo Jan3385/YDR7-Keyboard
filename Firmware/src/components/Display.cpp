@@ -103,6 +103,7 @@ void m_ShowInitialText(const char* text, uint8_t &yOffset, uint16_t delayMs)
 
 void Display::InitialScreenWTest()
 {
+    constexpr uint8_t TEXT_TIME_MS = 60;
     uint8_t yOffset = 0;
 
     m_ShowInitialText(PRODUCT_NAME, yOffset, 0);
@@ -123,79 +124,32 @@ void Display::InitialScreenWTest()
 
     char text[32];
     snprintf(text, sizeof(text), "CPU: %u kHz", clock_get_hz(clk_sys) / 1000);
-    m_ShowInitialText(text, yOffset, 30);
+    m_ShowInitialText(text, yOffset, TEXT_TIME_MS);
 
 #ifdef PICO_FLASH_SIZE_BYTES
     snprintf(text, sizeof(text), "Flash: %lu KB", PICO_FLASH_SIZE_BYTES / 1024);
-    m_ShowInitialText(text, yOffset, 40);
+    m_ShowInitialText(text, yOffset, TEXT_TIME_MS);
 #endif
 
     snprintf(text, sizeof(text), "Uptime: %lu ms", to_ms_since_boot(get_absolute_time()));
-    m_ShowInitialText(text, yOffset, 30);
+    m_ShowInitialText(text, yOffset, TEXT_TIME_MS);
 
     struct mallinfo mi = mallinfo();
     snprintf(text, sizeof(text), "Heap: %d / %d B", mi.ordblks, mi.fordblks);
     m_ShowInitialText(text, yOffset, 0);
     snprintf(text, sizeof(text), "Total Heap: %d B", mi.arena);
-    m_ShowInitialText(text, yOffset, 40);
+    m_ShowInitialText(text, yOffset, TEXT_TIME_MS);
 
     // Temperature sensor channel
     float temp = ReadInternalTemperatureC();
     snprintf(text, sizeof(text), "Temp: %.1f C", temp);
-    m_ShowInitialText(text, yOffset, 30);
+    m_ShowInitialText(text, yOffset, TEXT_TIME_MS);
 
     yOffset += 6;
     Display::DrawRect(5, yOffset-3, DISPLAY_WIDTH-10, 1, true);
     Display::Show();
     sleep_ms(50);
 
-    m_ShowInitialText("Power-on Self Test", yOffset, 40);
-    yOffset += 4;
-    m_ShowInitialText("OLED: OK (obv. lol)", yOffset, 0);
-
-    LED::LedArray.fill(0);
-    for(uint8_t i = 0; i < NUM_OF_LEDS; i++){
-        LED::LedArray.setPixelColor(i, WS2812::RGB(LED_BRIGHTNESS_VALUE_CAP/8, LED_BRIGHTNESS_VALUE_CAP/8, LED_BRIGHTNESS_VALUE_CAP/8));
-        LED::LedArray.show();
-        if(i % 10 == 0){
-            snprintf(text, sizeof(text), "LEDs: %u / %u", i+1, NUM_OF_LEDS);
-            m_ShowInitialText(text, yOffset, 0);
-        }
-        sleep_us(250);
-    }
-    snprintf(text, sizeof(text), "LEDs: %u / %u", NUM_OF_LEDS, NUM_OF_LEDS);
-    m_ShowInitialText(text, yOffset, 40);
-
-    LED::LedArray.fill(0);
-    LED::LedArray.show();
-
-    m_ShowInitialText("Keyboard short test", yOffset, 0);
-    for(uint8_t c = 0; c < K_COLS; c++){
-        bool shorted = false;
-        gpio_put(K_COL_PINS[c], 1);
-        sleep_us(10);
-
-        for(uint8_t r = 0; r < K_ROWS; r++){
-            if(gpio_get(K_ROW_PINS[r])){
-                shorted = true;
-                snprintf(text, sizeof(text), "SHORT at Col:%d Row:%d", c, r);
-                m_ShowInitialText(text, yOffset, 500);
-            }
-        }
-
-        if(shorted){
-            snprintf(text, sizeof(text), "SHORT at branch %d", c);
-            m_ShowInitialText(text, yOffset, 1500);
-        }else{
-            snprintf(text, sizeof(text), "Col %d: OK", c);
-            m_ShowInitialText(text, yOffset, 0);
-            sleep_us(100);
-        }
-
-        gpio_put(K_COL_PINS[c], 0);
-    }
-
-    m_ShowInitialText("All tests done", yOffset, 50);
     Display::Clear();
     Display::Show();
 
@@ -232,24 +186,18 @@ void Display::UpdateMenu()
     };
 
     Display::DrawRect(1, 1 + Display::GetSelectedMenuIndex() * (FONT_HEIGHT + 5), 
-        MENU_SIDE_WIDTH - 1, FONT_HEIGHT + 2, true);
+        MENU_SIDE_OFFSET - 1, FONT_HEIGHT + 2, true);
 
     Display::DrawTextWithBorder(0, 0,
-        menus[0], 1, MENU_SIDE_WIDTH);
+        menus[0], 1, MENU_SIDE_OFFSET);
     Display::DrawTextWithBorder(0, FONT_HEIGHT + 5,
-        menus[1], 1, MENU_SIDE_WIDTH);
+        menus[1], 1, MENU_SIDE_OFFSET);
     Display::DrawTextWithBorder(0, 2 * (FONT_HEIGHT + 5),
-        menus[2], 1, MENU_SIDE_WIDTH);
+        menus[2], 1, MENU_SIDE_OFFSET);
     Display::DrawTextWithBorder(0, 3 * (FONT_HEIGHT + 5),
-        menus[3], 1, MENU_SIDE_WIDTH);
+        menus[3], 1, MENU_SIDE_OFFSET);
     
     Display::RenderCtxScreen();
-
-    Display::DrawRect(0, DISPLAY_HEIGHT - FONT_HEIGHT - 2, DISPLAY_WIDTH, FONT_HEIGHT + 2, true);
-    char temperatureStr[16];
-    float tempC = ReadInternalTemperatureC();
-    snprintf(temperatureStr, sizeof(temperatureStr), "Temp: %.1fC", tempC);
-    Display::DrawText(5, DISPLAY_HEIGHT - FONT_HEIGHT - 1, temperatureStr, false);
 
     timeSinceLastActivityMs += 1000.0f / DISPLAY_UPDATE_FREQUENCY;
 }

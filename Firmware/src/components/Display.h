@@ -20,7 +20,7 @@
 #define OLED_DISPLAY_NORMAL 0xA4
 #define OLED_DISPLAY_ALL_ON 0xA5
 
-#define MENU_SIDE_WIDTH 28
+#define MENU_SIDE_OFFSET 28
 
 namespace Display{
     void SpecialkeyPressed(uint8_t key);

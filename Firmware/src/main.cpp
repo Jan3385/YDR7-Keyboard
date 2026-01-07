@@ -4,6 +4,7 @@
 
 #include <atomic>
 
+#include "config/themes.h"
 #include "config/user_config.h"
 
 #include "setup/HID_setup.h"
@@ -62,6 +63,8 @@ int main(){
 
     multicore_launch_core1(MULTICORE_DataPushHandler);
 
+    Theme::ApplyTheme(1);
+
     while (true) {
         tud_task();
 
@@ -75,16 +78,15 @@ int main(){
                     
                     LED::ChangeColor(
                         KEYBOARD_KEY_TO_LED_INDEX[pressedKeys[i]], 
-                        LED::RGB(255,0,0), 
+                        Theme::GetActiveColor(), 
                         15
                     );
                 } else break;
             }
-            LED::SetBackgroundColor(LED::RGB(128, 80, 80), 5);
             tud_hid_keyboard_report(0, 0, report);
         } else {
             tud_hid_keyboard_report(0, 0, nullptr);
-            LED::SetBackgroundColor(LED::RGB(128, 128, 128), 10);
+            
         }
 
         if(LEDTickTimer >= LEDTickTimerInterval){
